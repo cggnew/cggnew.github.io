@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>aaa认证</title>
+    <url>/2024/05/07/aaa%E8%AE%A4%E8%AF%81/</url>
+    <content><![CDATA[<ul>
+<li>[Huawei-aaa] </li>
+<li>aaa的含义</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">第一个a:身份</span><br><span class="line">第二个a:授权</span><br><span class="line">第三个a:计费(统计，审计,类似监控)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>telnet: 用于远程管理设备</p>
+</li>
+<li><p>telnet,aaa认证远程登入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r1[g0/0/1]----[g0/0/1]-r2</span><br><span class="line">1.更改r1和r2的设备名称</span><br><span class="line">[Huawei] sysname r1</span><br><span class="line">[Huawei] sysname r2</span><br><span class="line">2.配置r1和r2的ip地址</span><br><span class="line">[r1-g0/0/1] ip add 192.168.1.1 24 </span><br><span class="line">[r2-g0/0/1] ip add 192.168.1.2 24</span><br><span class="line">3.r1配置telnet服务</span><br><span class="line">[r1] telnet server enable (启动telne服务,ensp默认启动了的)</span><br><span class="line">[r1] user-interface vty 0 4 (进入远程虚拟终端)</span><br><span class="line">ps: vty 0 4,远程虚拟终端,0-4:同时允许5个用户接入</span><br><span class="line">[r1-ui-vty0-4]  authentication-mode aaa #启动aaa认证</span><br><span class="line">[r1-ui-vty0-4] aaa #进入aaa</span><br><span class="line">[r1-aaa] local-user test password cipher 123 #创建本地用户</span><br><span class="line">[r1-aaa] local-user test service-type telnet #设置用户的类型</span><br><span class="line">[r1-aaa] local-user cgg  privilege level 3 #设置用户等级,0最低15最高依此类推</span><br><span class="line">[r1-aaa] local-user cgg access-limit 1 #只允许单个用户登入</span><br><span class="line">[r1-aaa] local-user cgg idle-timeout 0 50 #设置用户的超时间为50秒</span><br><span class="line">[r1-aaa] local-user cgg  state block #锁定用户,禁止登入</span><br><span class="line">[r1-aaa] local-user cgg state active #解锁用户,允许登入</span><br><span class="line">[r1-aaa] lcoal-user cgg ? #查看关于本地用户的设置</span><br><span class="line">4.通过r2客户端进行测试</span><br><span class="line">&lt;r2&gt; telnet 192.168.1.1</span><br><span class="line">username: test </span><br><span class="line">password: xxxx</span><br><span class="line">info: xxxx</span><br><span class="line">&lt;r1&gt; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console：用于本地管理设备，一般用来初始化设备或者维修设备</p>
+</li>
+<li><p>console,aaa管理</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;r1[console_port]&gt;------&lt;[console_port]pc1&gt;</span><br><span class="line">1.配置r1</span><br><span class="line">[Huawei] user-interface console 0 #进入console接口</span><br><span class="line">[Huawei-ui-console0] authentication-mode aaa  #添加aaa认证</span><br><span class="line">[Huawei-ui-console0] aaa #进入aaa</span><br><span class="line">[Huawei-aaa] local-user test password cipher 123 #添加用户</span><br><span class="line">[Huawei-aaa] local-user test service-type terminal #设置用户的类型</span><br><span class="line">2.进入pc1进行测试</span><br><span class="line">username: test</span><br><span class="line">password: xxx</span><br><span class="line">[Huawei]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>console本地管理</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.配置r1</span><br><span class="line">[Huawei] user-interface console 0</span><br><span class="line">[Huawei-ui-console0] authentication-mode password #添加密码认证</span><br><span class="line">[Huawei-ui-console0] set authentication password cipher 123 #设置密码</span><br><span class="line">[Huawei-ui-console0] idle-time 0 30 #设置超时时间为30</span><br><span class="line">[Huawei-ui-console0] idle-time 0 0 #永不超时</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>acl</title>
+    <url>/2024/05/07/acl/</url>
+    <content><![CDATA[<ul>
+<li><p>acl访问控制列表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">用于对流量的访问控制，允许或拒绝数据流通过(是一项安全技术)</span><br></pre></td></tr></table></figure></li>
+<li><p>acl的应用场景</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.独立使用(用于包过滤功能)</span><br><span class="line">2.结合使用(做为工具被其他技术调用)</span><br><span class="line">acl包过滤功能，默认规则是&quot;允许所有数据流通过&quot;</span><br><span class="line">acl做为工具进行路由匹配的时候，默认规则是&quot;拒绝所有数据流通过&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>acl的分类</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">基本: 2000-2999,只检查源ip</span><br><span class="line">高级: 3000-3999，检查、目标ip、源ip、目标端口、协议、选项等</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>acl的规则: 按序检查、匹配停止、默认允许</p>
+</li>
+<li><p>ps: acl的匹配原则,遵循深度优先原则(越细明越靠前，越模糊越靠后)</p>
+</li>
+<li><p>配置顺序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Huawei] acl 2002 match-order config</span><br><span class="line">#设置步长为1，默认步长为5 </span><br><span class="line">[Huawei-acl-basic-2002] set 1 </span><br><span class="line">#acl自动匹配顺序</span><br><span class="line">[Huawei] acl match-order auto </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通配符掩码”反向掩码”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;0&quot; 严格匹配</span><br><span class="line">&quot;1&quot;任意匹配</span><br><span class="line">ps: 掩码为0.0.0.0 时候可以缩写为0 </span><br><span class="line">ps: 掩码是连续的1或0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>acl规则配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">	# 编号为2000的简单acl配置</span><br><span class="line">	[Huawei] acl 2000 </span><br><span class="line">	#拒绝ip地址为192.168.1.1的设备访问</span><br><span class="line">	[Huawei-acl-basic-2000] rule deny sorce 192.168.1.1 0 </span><br><span class="line">	#拒绝192.168.1.2的设备访问192.168.3.4 的ftp服务</span><br><span class="line">	[Huawei] acl 3000 #acl高级设置</span><br><span class="line">	[Huawei-acl-adv-3000] rule deny tcp source 192.168.1.2  0 destination </span><br><span class="line">192.168.3.4 0  destination-port eq ftp </span><br><span class="line">	#允许ip地址为192.168.2.2 的设备访问服务器192.168.4.1 的web服务</span><br><span class="line">	[Huawei-acl-adv-3000] rule permit tcp source 192.168.2.2 0  destination 192.168.4.1 0 destination-port eq www </span><br><span class="line">	#查看acl配置</span><br><span class="line">	[Huawei] dis acl all </span><br><span class="line">	#应用acl规制</span><br><span class="line">	[Huawei] int g0/0/1</span><br><span class="line">	#数据流出去的时候应用此规则</span><br><span class="line">	[Huawei-g0/0/1] traffic-filter  inbound acl 3000 </span><br><span class="line">	ps:  数据方向处理inbound还有与之相反的outbound代表出方向</span><br><span class="line">	面对我们,从左往右代表出方向，从右往左代表入方向</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dhcp</title>
+    <url>/2024/05/07/dhcp/</url>
+    <content><![CDATA[<ul>
+<li><p>dhcp动态主机配置协议</p>
+</li>
+<li><p>实现网络参数的自动分配(IP地址、掩码、网关、dns、…)</p>
+</li>
+<li><p>手动设置IP地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 不方便，工作量大</span><br><span class="line">2. 不便于管理</span><br><span class="line">3. 容易出错</span><br><span class="line">4. 地址容易冲突</span><br><span class="line">5. 利用率不高</span><br><span class="line">6. 没有统一的规划</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DHCP工作原理</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 发现(客户端寻找服务器租用ip地址)</span><br><span class="line">2. 回应(服务器有ip地址时会回应客户端)</span><br><span class="line">3. 请求(客户端向服务器发起租约请求)</span><br><span class="line">4. 确认(服务器同意客户端的请求)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DHCP租约时间</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">50% 第一次续约请求</span><br><span class="line">87.5% 第二次续约请求</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口地址池配置(只为一个网段分配网络参数)</p>
+</li>
+<li><p>自动引用接口地址的网络参数给客户端</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#启用dhcp服务</span><br><span class="line">[Huawei] dhcp enable </span><br><span class="line">#选择dhcp的服务的类型为接口地址池</span><br><span class="line">[Huawei-GigabitEthernet0/0/0]  dhc select interface </span><br><span class="line">#配置dhcp中dns地址</span><br><span class="line">[Huawei-GigabitEthernet0/0/0] dhcp server dns-list  114.114.114.114 </span><br><span class="line">#查看帮助</span><br><span class="line">[Huawei-GigabitEThernet0/0/0]  dhcp ? </span><br><span class="line"></span><br><span class="line">#查看网络参数</span><br><span class="line">Pc&gt; ipconfig </span><br><span class="line">#释放ip地址</span><br><span class="line">Pc&gt; ipconfig /release </span><br><span class="line">#重新请求</span><br><span class="line">Pc&gt; ipconfig /renew </span><br><span class="line"></span><br><span class="line">#dhcp全局地址此配置</span><br><span class="line">[Huawei] dhcp enable </span><br><span class="line">#设置全局地址池的名称为net1</span><br><span class="line">[Huawei] ip   pool net1 </span><br><span class="line">#为地址池net1配置网段</span><br><span class="line">[Huawei-ip-pool-net1] network 192.168.1.0 mask 24 </span><br><span class="line">#net1地址池设置网关</span><br><span class="line">[Huawei-ip-pool-net1] gateway-list 192.168.1.1 </span><br><span class="line">#net1地址池配置dns地址</span><br><span class="line">[Huawei-ip-pool-net1] dns-list 114.114.114.114 </span><br><span class="line">#net1地址池中固定分配ip地址</span><br><span class="line">[Huawei-ip-pool-net1] static-bind ip-address 192.168.1.10 mac-address 5498-9872-202F </span><br><span class="line">#net1地址池中排除192.168.1.20</span><br><span class="line">[Huawei-ip-pool-net1] exclude-ip-address 192.168.1.10 </span><br><span class="line">#设置net1地址池的租约时间</span><br><span class="line">[Huawei-ip-pool-net1] lease day 2  hour 3 minute 4 </span><br><span class="line">#查看更多设置</span><br><span class="line">[Huawei-ip-pool-net1]  ?</span><br><span class="line">#进入接口全局启用net1地址池</span><br><span class="line">[Huawei-g0/0/1] dhcp select global </span><br><span class="line"></span><br><span class="line">#设置dhcp中继</span><br><span class="line">[Huawei-g0/0/5] dhcp  select relay </span><br><span class="line">#设置中继服务器的ip</span><br><span class="line">[Huawei-g0/0/5] dhcp relay server-ip 192.168.2.1 </span><br><span class="line"></span><br><span class="line">DHCP报文大部分都是广播报文，不能跨网段转发</span><br><span class="line">如果客户端与服务器不在一个网段，就需要使用dhcp中继代理</span><br><span class="line">客户端与中继之间是广播</span><br><span class="line">中继与服务器之间是单播</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ftp抓包</title>
+    <url>/2024/05/07/ftp%E6%8A%93%E5%8C%85/</url>
+    <content><![CDATA[<ul>
+<li>ftp抓包<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">安装wireshark、winpcap、virtualbox、ensp程序</span><br><span class="line">打开ensp新建拓扑</span><br><span class="line">在拓扑中创建客户端、交换机、服务器设备</span><br><span class="line">连接客户端、交换机、服务器</span><br><span class="line">配置客户端和服务器的ip地址</span><br><span class="line">启动客户端、交换机、服务器</span><br><span class="line">启动服务器的ftp服务</span><br><span class="line">然后抓包</span><br><span class="line">通过客户端登入ftp服务器</span><br><span class="line">查看wireshark的抓包情况</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hybrid</title>
+    <url>/2024/05/07/hybrid/</url>
+    <content><![CDATA[<ul>
+<li>hybrid实现同网段但不同vlan的通信<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;Pc1[g0/0/1]&gt;------&lt;[g0/0/1]S1[g0/0/2]&gt;------&lt;[g0/0/2]S2[g0/0/1]&gt;----&lt;[g0/0/1]Pc2&gt;</span><br><span class="line">	1.在S1和S2中分别创建vlan 10和vlan 20 </span><br><span class="line">	[Huawei] vlan batch 10 20  #s1</span><br><span class="line">	[Huawei] vlan batch 10 20 #s2</span><br><span class="line">	2.将接口加入vlan</span><br><span class="line">	[Huawei-g0/0/1] port hybrid pvid vlan 10 #s1</span><br><span class="line">	[Huawei-g0/0/1] port hybrid pvid vlan 20 #s2</span><br><span class="line">	3.向接口的vlan列表添加标签</span><br><span class="line">	[Huawei-g0/0/1] port hybrid untagged vlan 10 20 #向s1的g0/0/1接口添加剥离标签</span><br><span class="line">	[Huawei-g0/0/1] port hybrid untagged vlan 10 20 #向s2的g0/0/1接口添加剥离标签</span><br><span class="line">	4.配置S1和S2之间的trunk链路</span><br><span class="line">	[Huawei-g0/0/2] port link-type trunk # S1的g0/0/2的类型</span><br><span class="line">	[Huawei-g0/0/2] port trunk allow-pass vlan 10 20 #S1允许通过的vlan</span><br><span class="line">	[Huawei-g0/0/2] port link-type trunk # S2的g0/0/2的类型</span><br><span class="line">	[Huawei-g0/0/2] port trunk allow-pass vlan 10 20 #S2允许通过的vlan</span><br><span class="line">	5.配置pc1和pc2的ip并测试</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ip地址</title>
+    <url>/2024/05/07/ip%E5%9C%B0%E5%9D%80/</url>
+    <content><![CDATA[<ul>
+<li><p>ip地址(Internet Protocal网际协议地址)</p>
+</li>
+<li><p>ip地址的背景: 每台计算机都需要一个唯一的标识</p>
+</li>
+<li><p>ip地址的特点:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip地址具有唯一性(同一个网络中不能有相同的ip地址)</span><br><span class="line">ip地址是一个数值形式的网络编码</span><br><span class="line">ip地址是由32为二进制组成</span><br><span class="line">11000000.01000001.10001100.00000011(底层点分二进制格式)</span><br><span class="line">192.65.140.7(一般格式，淀粉十进制)</span><br><span class="line">点间隔的分段结构，共4段，每段有8为二进制构成</span><br><span class="line">每段内的二进制d取值范围是00000000至11111111</span><br><span class="line">转为十进制是0址255</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最大的ip地址(全网广播时的ip)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">11111111.11111111.11111111.11111111</span><br><span class="line">255.255.255.255</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最小的ip地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">00000000.00000000.000000000.000000000</span><br><span class="line">0.0.0.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ip地址分为网路地址和主机地址(例: 电话023-12345678,区号+号码)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.65.140.7/24</span><br><span class="line">192.65.140 是网络地址</span><br><span class="line">7是主机地址</span><br><span class="line">24代表掩码连续1的个数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>掩码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">用于区分网络位和主机位</span><br><span class="line">使用连续的1和0构成的32二进制</span><br><span class="line">11111111.11111111.11111111.00000000</span><br><span class="line">255.255.255.0</span><br><span class="line">11111111.11111111.00000000.00000000</span><br><span class="line">255.255.0.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>计算主机位和网络位(子网掩码跟ip地址进行与运算)</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">192.168.64.1/24</span><br><span class="line">192.168.64.1 -&gt; 11000000.10101000.01000010.00000001</span><br><span class="line">255.255.255.0 -&gt; 11111111.11111111.11111111.00000000</span><br><span class="line">网络: 192.168.64.0</span><br><span class="line">主机位: 1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ip地址分为：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A类: 网络位1~126(除去0和127)</span><br><span class="line">B类: 网络位128~191</span><br><span class="line">C类：网络位192~223</span><br><span class="line">D类: 为组广播地址</span><br><span class="line">E类: 保留地址</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>ip地址也可以分为公网和私网地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">公网地址: 用于访问互联网</span><br><span class="line">私网地址: 用于内部使用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>私有地址的范围</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">10.0.0.0</span><br><span class="line">172.16.0.0~172.31.0.0</span><br><span class="line">192.168.0.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特殊地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">168.254.0.0(自动协商地址,ip地址获取失败后自动产生)</span><br><span class="line">127.0.0.0(回环、环回、本机或协议栈地址，任何时候与127.x.x.x都能通信)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ip地址的配置方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.自动获取(dhcp)</span><br><span class="line">2.手动配置</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>windows下的网络命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ipconfig 	# 查看网络配置</span><br><span class="line">ipconfig /all 	# 查看详细配置</span><br><span class="line">getmac 		# 获取mac地址</span><br><span class="line">netstat		# 查看网络连接的情况</span><br><span class="line">ping xxx.xxx.xx		 # 测试网络通信</span><br><span class="line">nslookup xxx.xxx.xxx 	 # 解析域名</span><br><span class="line">tracert xxx.xxx.xxx 	 # 进行路由跟踪</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ip路由</title>
+    <url>/2024/05/07/ip%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<ul>
+<li><p>ip路由基础	</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">路由: 源节点到目标节点，进行路径选择的过程</span><br><span class="line"></span><br><span class="line">路由器: 路径选择的设备</span><br><span class="line"></span><br><span class="line">路由技术：选择最优路径的方法</span><br><span class="line"></span><br><span class="line">路由表: 记录各个节点的地图</span><br><span class="line">		   1. 自身节点地址</span><br><span class="line">		   2. 目标节点地址</span><br><span class="line">		   3. 最优路径</span><br><span class="line"></span><br><span class="line">路由表由直连跟非直连构成</span><br><span class="line">		  直连：接口状态up，配置ip，自动进入路由表</span><br><span class="line">		  非直连： 需要配置静态路由或动态路由</span><br><span class="line"></span><br><span class="line">路由器ip配置（不同接口、不同网段、相同链路、相同网段）</span><br><span class="line"></span><br><span class="line">下一跳: 对端设备接口ip地址(数据下一次提交的地方)</span><br><span class="line"></span><br><span class="line">出接口: 数据从当前设备的那个接口转发出去(组要用于点到点链路)</span><br><span class="line"></span><br><span class="line">全网互通:</span><br><span class="line">	1.所有路由器的路由表状态一致的过程</span><br><span class="line">	2.所有路由器的路由表都有全部网段的条目</span><br><span class="line">	3.如何某个路由器的路由表缺少某个网段条目，那这个路由器就无法访问这个网段</span><br><span class="line"></span><br><span class="line">数据的通信是双向的、有去有回。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>全网互通配置:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;R1[g0/0/0]&gt;:--------:&lt;[g0/0/0]R2[g0/0/1]&gt;:--------:&lt;[g0/0/1]R3[g0/0/0]&gt;:--------:&lt;[g0/0/0]R4[g0/0/1]&gt;:--------:&lt;[g0/0/1]R5&gt;</span><br><span class="line"></span><br><span class="line">ip地址配置:</span><br><span class="line">	R1[g0/0/0]: 192.168.1.1/24 </span><br><span class="line"></span><br><span class="line">	R2[g0/0/0]: 192.168.1.2/24</span><br><span class="line">	R2[g0/0/1]: 192.168.2.1/24</span><br><span class="line"></span><br><span class="line">	R3[g0/0/1]: 192.168.2.2/24</span><br><span class="line">	R3[g0/0/0]: 192.168.3.1/24</span><br><span class="line"></span><br><span class="line">	R4[g0/0/0]: 192.168.3.2/24</span><br><span class="line">	R4[g0/0/1]: 192.168.4.1/24</span><br><span class="line"></span><br><span class="line">	R5[g0/0/1]: 192.168.4.2/24</span><br><span class="line">静态路由配置</span><br><span class="line">	[R1] ip route-static 192.168.2.0 24 192.168.1.2</span><br><span class="line">	[R1] ip route-static 192.168.3.0 24 192.168.1.2 </span><br><span class="line">	[R1] ip route-static 192.168.4.0 24 192.168.1.2 </span><br><span class="line"></span><br><span class="line">	[R2] ip route-static 192.168.3.0 24 192.168.2.2 </span><br><span class="line">	[R2] ip route-static 192.168.4.0 24 192.168.2.2 </span><br><span class="line"></span><br><span class="line">	[R3] ip route-static 192.168.1.0 24 192.168.2.1 </span><br><span class="line">	[R3] ip route-static 192.168.4.0 24 192.168.3.2 </span><br><span class="line"></span><br><span class="line">	[R4] ip route-static 192.168.1.0 24 192.168.3.1 </span><br><span class="line">	[R4] ip route-static 192.168.2.0 24 192.168.3.1 </span><br><span class="line"></span><br><span class="line">	[R5] ip route-static 192.168.1.0 24 192.168.4.1</span><br><span class="line">	[R5] ip route-static 192.168.2.0 24 192.168.4.1</span><br><span class="line">	[R5] ip route-static 192.168.3.0 24 192.168.4.1 </span><br><span class="line">测试</span><br><span class="line">	[R1] tracert 192.168.4.2 </span><br><span class="line">	</span><br><span class="line">	tracertoute to 192.168.4.2(192.168.4.2),xxxxx to break </span><br><span class="line">	1 192.168.1.2 xxxxx</span><br><span class="line">	2 192.168.2.2 xxxxx</span><br><span class="line">	3 192.168.3.2 xxxxx</span><br><span class="line">	4 192.168.4.2 xxxxx</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>lldp</title>
+    <url>/2024/05/07/lldp/</url>
+    <content><![CDATA[<ul>
+<li><p>lldp: 数据链路层发现协议,用于拓扑图发现,能够获取相邻设备的信息，能够知晓上下游连接的设备</p>
+</li>
+<li><p>lldp配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.设备重命名,便于区分设备</span><br><span class="line">[Huawei] sysname r1 </span><br><span class="line">2.全局启用lldp</span><br><span class="line">[Huawei] lldp enable </span><br><span class="line">3.接口启用lldp,执行lldp enable 过后会自动启动</span><br><span class="line">[Huawei-G0/0/0] lldp enable </span><br><span class="line">4.验证</span><br><span class="line">&lt;Huawei&gt; display lldp neighbor</span><br><span class="line">&lt;Huawei&gt; display lldp neighbor brief </span><br><span class="line">&lt;Huawei&gt; display lldp .... ?</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>display neighbor brief 的输出信息</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Local Intf</th>
+<th align="left">Neighbor dev</th>
+<th align="center">Neighbor Intf</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">g0&#x2F;0&#x2F;1</td>
+<td align="left">r1</td>
+<td align="center">g0&#x2F;0&#x2F;2</td>
+</tr>
+<tr>
+<td align="center">g0&#x2F;03</td>
+<td align="left">s1</td>
+<td align="center">g0&#x2F;0&#x2F;4</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Local Intf: 本地接口</li>
+<li>Neighbor dev: 对端设备(相邻设备)</li>
+<li>Neighbor Intf: 对端接口</li>
+<li>例: g0&#x2F;0&#x2F;1的对端设备为r1,其接口为g0&#x2F;0&#x2F;2</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>muxvlan</title>
+    <url>/2024/05/07/muxvlan/</url>
+    <content><![CDATA[<ul>
+<li><p>muxvlan: 特有的vlan通信模型，分为主vlan和子vlan</p>
+</li>
+<li><p>muxvlan的特点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.所有的子vlan都可以和主vlan通信</span><br><span class="line">2.子vlan之间不能通信</span><br><span class="line">3.互通型子vlan内可以通信</span><br><span class="line">4.隔离型子vlan内不能通信</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置步骤</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.配置客户端ip</span><br><span class="line">2.在交换机上创建vlan</span><br><span class="line">[Huawei] vlan batch 10 20 100</span><br><span class="line">3.将接口加入到相应的vlan</span><br><span class="line">[Huawei] interface GigabitEthernet0/0/1</span><br><span class="line">[Huawei-GigabitEthernet0/0/1] port link-type access </span><br><span class="line">[Huawei-GigabitEthernet0/0/1] port default vlan 10 </span><br><span class="line">...........</span><br><span class="line">4.配置muxvlan</span><br><span class="line">[Huawei-vlan100] mux-vlan #配置主vlan</span><br><span class="line">[Huawei-vlan100] subordinate group 10 #配置互通型子vlan</span><br><span class="line">[Huawei-vlan100] subordinate separate 20 #配置隔离型子vlan</span><br><span class="line">&lt;Huawei&gt; display vlan #查看vlan类型</span><br><span class="line">5.使用ping进行测试</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nat</title>
+    <url>/2024/05/07/nat/</url>
+    <content><![CDATA[<ul>
+<li><p>nat网络地址转换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IPV4地址现状(已经枯竭了)</span><br><span class="line">NAT可以节省IP地址</span><br><span class="line">实现内部私有ip地址与外部公网ip地址之间的转换</span><br><span class="line">将私有地址转换成为公网地址(出)</span><br><span class="line">将公网地址转换成为私有地址(入)</span><br><span class="line">私有ip地址不能在公网上路由，私有ip地址不能与公网ip地址进行通信</span><br><span class="line"></span><br><span class="line">延长IPV4地址使用时间的技术</span><br><span class="line">1. VLSM	</span><br><span class="line">2. CIDR</span><br><span class="line">3. DHCP</span><br><span class="line">4. NAT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NAT特点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 增强了内部网络安全性</span><br><span class="line">2. 增加了数据转发时延</span><br><span class="line">3. 打破了点到点数据传输方式</span><br><span class="line">4. 有些技术不支持不需要</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一旦实施NAT，网络架构就变成了内网与外网，就存在网络边界之分，技术的应用就要有所区分<br>NAT实施过程中所有配置的公网ip地址要具有网络连通性(互联网节点要能和这个地址通信)</p>
+</li>
+<li><p>实现方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#查看nat配置</span><br><span class="line">&lt;Huawei&gt; display nat ? </span><br><span class="line">#静态nat配置(它的特点，一对一，没有节省ip地址，但通信可以双向触发)</span><br><span class="line">[Huawei-GigabitEthernet0/0/1]  nat static global  202.101.98.10 inside  192.168.1.10 </span><br><span class="line"></span><br><span class="line">#动态nat配置(它的特点，少对多)</span><br><span class="line">#允许私网地址进行转换的地址范围(私网地址池)</span><br><span class="line">[Huawei-acl-basic-2000] rule permit source 192.168.1.0 0.0.0.255 </span><br><span class="line">#设置公网地址的范围（公网地址池）</span><br><span class="line">[Huawei]  nat address-group  1 202.101.98.10  202.101.98.20 </span><br><span class="line">#启用动态nat</span><br><span class="line">[Huawei-GigabitEthernet0/0/1] nat outbound  2000 address-group 1 no-pat </span><br><span class="line"></span><br><span class="line"> Easy-ip </span><br><span class="line">#easy-ip配置(一堆所有)</span><br><span class="line">#配置私有池</span><br><span class="line">[Huawei-acl-basic-2000] rule permit source 192.168.1.0 0.0.0.255 </span><br><span class="line">#启用easy-ip </span><br><span class="line">[Huawei-GigabitEthernet0/0/1] nat outbound 2000 </span><br><span class="line"></span><br><span class="line">NAPT(easy-ip和动态nat结合版)</span><br><span class="line">#配置私有地址池</span><br><span class="line">[Huawei-acl-basic-2000] rule permit 192.168.1.0 0.0.0.2555 </span><br><span class="line">#配置公网地址池</span><br><span class="line">[Huawei] net  address-group 1 202.101.98.10 202.101.98.20 </span><br><span class="line">#启用NAPT</span><br><span class="line">[Huawei-GigabitEthernet0/0/1] nat outbound 2000 address-group 1 </span><br><span class="line"></span><br><span class="line">NAT-Server(为服务器单独的分配对应的公网ip，便于外网设备访问)</span><br><span class="line">#为ftp服务配置对应的公网ip </span><br><span class="line">[Huawei-GigabitEthernet0/0/1] nat server  protocol tcp global 202.101.98.10 ftp inside 192.168.1.40  ftp </span><br><span class="line"></span><br><span class="line">ps: nat在公网的接口进行配置 </span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>stp生成树协议</title>
+    <url>/2024/05/07/stp%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<ul>
+<li><p>stp生成树协议</p>
+</li>
+<li><p>   应用与二层交换网络设计(网状结构)</p>
+</li>
+<li><p>优点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">可靠性、稳定性高</span><br><span class="line">提高带宽、负载均衡、冗余备份</span><br><span class="line">消除环路</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>环路</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.数据回流的现象</span><br><span class="line">2.或多或少都会存在，尽量避免</span><br><span class="line">3.二层、三层都有环路问题</span><br><span class="line">4.环路产生的原因: 协议缺陷、人为导致</span><br><span class="line">5.环路的危害: 占用带宽、消耗设备性能、增加数据的转发延时</span><br><span class="line">6.环路如何避免: 网络层通过TTL值和路由协议;链路层通过stp协议</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TTL值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.生存时间或时间周期	</span><br><span class="line">2.属于ip数据包中的一个值(三层)</span><br><span class="line">3.取值范围0-255(1个字节)</span><br><span class="line">4.不同节点其默认值不一样（32 64 128 255 ）</span><br><span class="line">5.通过ping 127.0.0.1 查询自身节点默认的TTL值</span><br><span class="line">6.某些技术会影响TTL值发生变化(TTL也可以修改)</span><br><span class="line">7.可以判断目标节点的系统类型（结果仅供参考）</span><br><span class="line">8.经过一个路由器数值减1</span><br><span class="line">9.当数值为0的时候,数据丢弃</span><br><span class="line">10.防止数据无限循环(消除环路)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>stp树结构的优点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.连续性</span><br><span class="line">2.唯一性</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>stp中的概念</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">根网桥</span><br><span class="line">根端口  &quot;级联向上的端口&quot;</span><br><span class="line">指定端口 &quot;级联向下的端口&quot;</span><br><span class="line">阻塞端口 </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根网桥的选举</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 根据网桥的id进行选举</span><br><span class="line">2. 网桥的id由优先级和mac地址组成</span><br><span class="line">3. 优先级取值范围0-65535(理论) 0-61440(实际)</span><br><span class="line">4. 默认值 32768 </span><br><span class="line">5. 数值越低越优先</span><br><span class="line">6. 优先级的设置只能是4096的倍数, 比如: 0 、 4096、8192、...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根端口、指定端口选举</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.  路径成本(当前交换机去往根网桥的路径开销值最低)</span><br><span class="line">2.  网桥id</span><br><span class="line">3.  端口id(对端、本端)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>端口id</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 由有优先级和物理的端口编号组成</span><br><span class="line">2. 优先级取值范围0-255(理论) 0-240 (实际)</span><br><span class="line">3. 默认值128 </span><br><span class="line">4. 数值越低越优先</span><br><span class="line">5. 优先级的设置只能是16的倍数, 比如: 0、16、...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>路径成本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 默认标准802.1T</span><br><span class="line">2. 取值范围2亿</span><br><span class="line">3. 100M默认值200000, 1000M默认值为20000</span><br><span class="line">4. 数值越低越优先</span><br><span class="line">5. 只计算出方向</span><br><span class="line">6. 更改cost值</span><br><span class="line">[Huawei-g0/0/1] stp cost  200</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#查看stp信息</span><br><span class="line">&lt;Huawei&gt; dis stp brief </span><br><span class="line">#查看指定接口的stp信息</span><br><span class="line">&lt;Huawei&gt; dis stp int g0/0/1 </span><br><span class="line">#设置交换机的优先级</span><br><span class="line">[Huawei] stp  priority  4096 </span><br><span class="line">#设置接口的路径成本</span><br><span class="line">[Huawei-g0/0/1] stp cost 11 </span><br><span class="line">#修改接口的优先级</span><br><span class="line">[Huawei-g0/0/1] stp port priority 32 </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>stp生成树协议2</title>
+    <url>/2024/05/07/stp%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE2/</url>
+    <content><![CDATA[<ul>
+<li><p>stp生成树协议</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">	BPDU(桥协议数据单元)</span><br><span class="line">配置BPDU(向下)</span><br><span class="line">TCN BPDU(向上)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>stp端口状态(BPDU、MAC、DATA)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 禁用</span><br><span class="line">2. 阻塞: 接收并处理BPDU</span><br><span class="line">3. 侦听: 接收、发送BPDU</span><br><span class="line">4. 学习: 接收BPDU、学习MAC地址</span><br><span class="line">5. 转发: 接收BPDU、学习MAC地址、转发数据</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Times计时器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello 2s</span><br><span class="line">MAxage 20s (老化时间)</span><br><span class="line">FWDly 15(转发时延)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>stp缺陷</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 收敛速度慢(RSTP)</span><br><span class="line">2. 负载均衡失效(MSTP)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成树协议默认用(MSTP)</p>
+</li>
+<li><p>根网桥、根端口、指定端口、阻塞端口，生成树的本质就是为了确认堵塞端口</p>
+</li>
+<li><p>生成树的选举过程(对比择优，初始化时所有的交换机都认为自己是根网桥、相互之间传递BPDU，最终选出根网桥)</p>
+</li>
+</ul>
+<p>#手动设置根网桥</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Huawei] stp root primary </span><br><span class="line">[Huawei] stp prioriry 0 </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>生成树的模式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STP: 收敛速度慢、打破负载均衡</span><br><span class="line">RSTP 打破负载均衡</span><br></pre></td></tr></table></figure></li>
+<li><p>RSTP的端口模式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RP的备份端口是AP</span><br><span class="line">DP的备份端口是BP</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mac地址的老化时间是300秒</p>
+</li>
+<li><p>STP对mac地址表的处理是缩短老化时间为”15”秒</p>
+</li>
+<li><p>RSTP对mac地址表的处理是”将无效的记录直接删除”</p>
+</li>
+<li><p>在MSTP环境中,交换机端口的角色和状态和MSTP实例数量成对应关系</p>
+</li>
+<li><p>交换机的所有接口都在转发数据(针对某个生成树实例，某个端口可能是堵塞的)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#创建mstp区域</span><br><span class="line">[Huawei] region-configuration </span><br><span class="line">#重名命mstp区域为test</span><br><span class="line">region-name  test</span><br><span class="line"># 创建实例并将对应的vlan加入到其中</span><br><span class="line">instance 1 vlan 10 </span><br><span class="line">instance 2 vlan 20 </span><br><span class="line">#保存区域设置</span><br><span class="line">active region-configuration </span><br><span class="line"></span><br><span class="line">#在s1中将实例1设置为根网桥，实例2设置为根网桥的备份</span><br><span class="line">[s1] stp instance 1 root primary </span><br><span class="line">[s1] stp instance 2 root secondary </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有很多种类的生成树: STP RST MST IST SST CST CIST PVST …</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vlan</title>
+    <url>/2024/05/07/vlan/</url>
+    <content><![CDATA[<ul>
+<li><p>arp地址解析协议</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">将一个已知的ip地址，解析成为一个mac地址</span><br><span class="line">正常情况下，一个ip地址对应一个mac地址</span><br><span class="line">如果出现一个mac地址对应多个ip地址的情况!(合法代理?非法欺骗)</span><br><span class="line">ARP安全问题(伪造arp响应报文)</span><br><span class="line">	1.mac地址是真实的(欺骗，数据劫持，用户不能直接感知)</span><br><span class="line">	2.mac地址是虚假的(攻击，通信故障，用户能直接感知)</span><br><span class="line">攻击对象</span><br><span class="line">	设备(影响设备的整个下游)</span><br><span class="line">	终端(但影响单个用户)	</span><br><span class="line">解决方案</span><br><span class="line">	1.DHCP snooping</span><br><span class="line">	2.ARP静态绑定(双向绑定)</span><br><span class="line">	[Huawei] arp static 172.16.1.10 5489-980a-805d(网络设备)</span><br><span class="line">	PC&gt; arp -s 172.16.2.10 54-89-98-08-0D-FA(用户终端)</span><br><span class="line">	3.其他</span><br><span class="line">	&lt;Huawei&gt;display arp (设备查看arp缓存表)</span><br><span class="line">	pc: arp -a (用户终端查看arp缓存表)</span><br><span class="line">	pc: arp -d (用户终端删除arp缓存表)</span><br><span class="line">	ARP：老化时间</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vlan虚拟局域网</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">	lan：本地区域网络&quot;局域网&quot;</span><br><span class="line">	vlan:虚拟局域网,对物理局域网进行逻辑划分</span><br><span class="line"></span><br><span class="line">为什么需要划分vlan?</span><br><span class="line">	1.故障上升</span><br><span class="line">	2.安全风险</span><br><span class="line">	3.广播流量增加</span><br><span class="line">	4.不便于管理</span><br><span class="line"></span><br><span class="line">物理隔离(路由器)</span><br><span class="line">	1.增加设备，增加成本</span><br><span class="line">	2.改变网络结构</span><br><span class="line">	3.不够灵活</span><br><span class="line"></span><br><span class="line">逻辑隔离(交换机)</span><br><span class="line">	默认情况下，交换机的所有接口都属于vlan1</span><br><span class="line">	&lt;Huawei&gt; display vlan </span><br><span class="line">	</span><br><span class="line">	1.在交换机上创建vlan</span><br><span class="line">	命令: vlan &lt;vid&gt; [batch vid [to] vid ]</span><br><span class="line">	[Huawei] vlan 10 #创建进入vid为10的vlan</span><br><span class="line">	[Huawei] vlan batch 20  to 30  #创建vid为20到30的vlan</span><br><span class="line">	[Huawei] undo vlan batch 20 to 30 #删除vid为20到30vlan</span><br><span class="line">	[Huawei] vlan batch 4 9 #创建vid为4和9的vlan</span><br><span class="line">	[Huawei] display vlan #查看vlan</span><br><span class="line">	2.将接口加入vlan</span><br><span class="line">	[Huawei] int g0/0/1 #进入g0/0/1接口 </span><br><span class="line">	[Huawei-GigabitEthernet0/0/1] port link-type access #设置接口类型为access</span><br><span class="line">	[Huawei-GigabitEthernet0/0/1] port default vlan 10  #设置接口的默认vlan为10</span><br><span class="line">	[Huawei-vlan10] port g0/0/1 #将接口加入到vlan10,g0/0/1的接口类型要为access</span><br><span class="line">	[Huawei] port-group vlan_grop #创建vlan组</span><br><span class="line">	[Huawei-port-group-vlan_group] group-member g0/0/2 t0 g0/0/10 #把2到10的接口加入到组中</span><br><span class="line">	[Huawei-port-group-vlan_group] port link-type access #设置组中接口的类型</span><br><span class="line">	[Huawei-port-group-vlan_group] prot default vlan 20 #把组中的接口添加到vlan 20 中</span><br><span class="line">	3.用户终端接入什么端口就属于什么vlan</span><br><span class="line">	 </span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vlan2</title>
+    <url>/2024/05/07/vlan2/</url>
+    <content><![CDATA[<ul>
+<li><p>vlan通信的应用场景</p>
+</li>
+<li><pre><code>vlan不同，不同网段，不同网络
+</code></pre>
+</li>
+<li><p>查看vlan类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">	&lt;Huawei&gt; display interface brief #查看接口状态</span><br><span class="line">	&lt;Huawei&gt; display port vlan active #查看接口的vlan信息</span><br><span class="line">	&lt;Huawei&gt; display port vlan active g0/0/1  #查看g0/0/1接口信息</span><br><span class="line">vlan的类型</span><br><span class="line">	access: 接入，专用，只承载一个vlan的数据，用于交换机和用户终端进行通信</span><br><span class="line">	Trunk: 中继，公共，可以承载所有vlan的数据，用于交换机与交换机之间</span><br><span class="line">	Hybrid: 混合，自定义vlan标签的移除与添加(默认类型)</span><br><span class="line">	ps: hybrid的pvid和vlanlist没有关联,8021Q,vlan封装协议(vlan标签添加和删除)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口vlan 设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">port link-type trunk | access | hybrid #设置接口的vlan类型</span><br><span class="line">port default vlan vlan_id #设置接口的默认vlan,用于access类型的vlan</span><br><span class="line">port  hybrid | trunk pvid vlan_id #设值接口的默认vlan用于trunk和hybrid类型</span><br><span class="line">hybrid类型添加或移除vlan的标签</span><br><span class="line">	port hybrid tagged vlan vlan_id  #添加标签</span><br><span class="line">	port hybrid untagged vlan vlan_id #移除标签</span><br><span class="line">[Huawei] clear configuration interface g0/0/1(删除g0/0/1接口下的所有配置)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vrp命令</title>
+    <url>/2024/05/07/vrp%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;Huawei&gt; language-mode chinese </span><br><span class="line">#更改语言模式</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; dir [目录]</span><br><span class="line">#查看目录下的文件和目录</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; pwd</span><br><span class="line">#显示当前目录</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; mkdir &lt;目录名&gt;</span><br><span class="line">#创建目录</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; rmdkir &lt;目录名&gt; </span><br><span class="line">#删除空目录</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt;move &lt;文件名&gt; &lt;目录&gt;[/文件名]</span><br><span class="line">#移动文件</span><br><span class="line">            </span><br><span class="line">&lt;Huawei&gt; delete &lt;文件名&gt; </span><br><span class="line">#删除文件</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; undelete &lt;文件名&gt;</span><br><span class="line">#恢复删除的文件</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; display current-configuration </span><br><span class="line">#查看当前配置</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; save </span><br><span class="line">#保存配置文件</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; reset saved-configuration </span><br><span class="line">#重置配置文件</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; compare configuration </span><br><span class="line">#查看配置文件的差异</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; display history-commond  </span><br><span class="line">#查看历史命令</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; display     ip interface brief    </span><br><span class="line">#查看接口状态</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; display this </span><br><span class="line">#查看当前设置</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; system-view </span><br><span class="line">#进入系统模式</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; sysname test</span><br><span class="line">#修改主机名为test</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; undo sysname </span><br><span class="line">#恢复主机名</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; undo info enable </span><br><span class="line">#关闭信息中心</span><br><span class="line"></span><br><span class="line">[Huawei] interface g0/0/0 </span><br><span class="line">#进入g0/0/0接口模式</span><br><span class="line"></span><br><span class="line">[Huawei-g0/0/0] ip add 192.168.1.1 24  [sub] </span><br><span class="line">#配置IP地址 ,sub代表子ip地址</span><br><span class="line"></span><br><span class="line">[Huawei-g0/0/0] shutdown </span><br><span class="line">#关闭接口</span><br><span class="line"></span><br><span class="line">[Huawei-g0/0/0] undo shutdown </span><br><span class="line">#取消关闭接口</span><br><span class="line"></span><br><span class="line">[Huawei-g0/0/0] restart</span><br><span class="line">#重启接口</span><br><span class="line"></span><br><span class="line">[Huawei] ip route-static 192.168.1.0 24 192.168.1.1 [preference 优先级]</span><br><span class="line">#配置静态路由,preference 的范围为0~255的整数，数字越小优先级越高</span><br><span class="line"> </span><br><span class="line">[Huawei] user-interface console 0 </span><br><span class="line">#进入console用户视图</span><br><span class="line"></span><br><span class="line">[Huawei-ui-console0] authentication-mode password  </span><br><span class="line">#设置用户的验证方式为密码验证</span><br><span class="line"></span><br><span class="line">[Huawei-ui-console0] set authentication  password cipher 123456</span><br><span class="line">#设置authentication用户的密码</span><br><span class="line"></span><br><span class="line">[Huawei-ui-console0] idle-timeout 10 20 </span><br><span class="line">#设置超时时间为10分20秒</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; ping ip|域名</span><br><span class="line">#测试连通性</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; tracert ip| 域名</span><br><span class="line">#路由跟踪</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; ?</span><br><span class="line">#命令提示</span><br><span class="line"></span><br><span class="line">&lt;Huawei&gt; command &lt;tab&gt; </span><br><span class="line">#输命令的时候可以通过tab键补全</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>交换机路由</title>
+    <url>/2024/05/07/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<ul>
+<li>交换机和路由器互通</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;r1[g0/0/1]&gt;----&lt;[g0/0/1]s1]&gt; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>方法一</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 配置r1ip</span><br><span class="line">[Huawei-g0/0/1] ip add 192.168.1.1 24 </span><br><span class="line">2. 配s1</span><br><span class="line">[Huawei-g0/0/1] undo portswitch #关闭接口</span><br><span class="line">[Huawei-g0/0/1] ip add 192.168.1.2 24 #配置ip，ensp模拟器不允许</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.配置r1ip</span><br><span class="line">[Huawei-g0/0/1] ip add 192.168.1.1 24 </span><br><span class="line">2.配s1</span><br><span class="line">[Huawei] vlan 10</span><br><span class="line">[Huawei-g0/0/1] port  link-type access </span><br><span class="line">[Huawei-g0/0/1] port default vlan 10 </span><br><span class="line">[Huawei] interface vlanif 10 </span><br><span class="line">[Huawei-vlanif10] ip add 192.168.1.2 24 #配置vlan10的IP的地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单臂路由</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">把路由器的单个接口划分为多个逻辑接口与交换机结合进行路由操作</span><br><span class="line">#进入g0/0/1的子接口id为10</span><br><span class="line">[Huawei] int g0/0/1.10 </span><br><span class="line">#为子接口配置ip地址</span><br><span class="line">[Huawei-GigabitEnthernet0/0/1.10] ip add 192.168.1.1 24 </span><br><span class="line">#启动arp广播</span><br><span class="line">[Huawei-GigabitEthernet0/0/1.10]  arp brodcast enable </span><br><span class="line">#将vlan id  与子接口进行绑定</span><br><span class="line">[Huawei-GigabitEthernet0/0/1.10] dot1q termination vid  10 </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>三层交换</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">通过给对应的vlan配置ip进行路由通信</span><br><span class="line">#进入vlan10 的接口	</span><br><span class="line">[Huawei] int valnif 10 </span><br><span class="line">#为vlan10和配置ip</span><br><span class="line">[Huawei-vlanif10] ip add 192.168.1.1  24 </span><br><span class="line">[Huawei-vlanif20] ip add 1921.68.2.1 24 </span><br><span class="line">#将对应的设备加入到相应的vlan中</span><br><span class="line">[huawei-g0/0/1] port link-type access</span><br><span class="line">[Huawei-g0/0/1] port default vlan 10 </span><br><span class="line">[Huawei-g0/0/2] port link-type access</span><br><span class="line">[Huawei-g0/0/2]port default vlan 20 </span><br><span class="line">#将客户端的网关设置为vlan的ip就可以进行通信了</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字符编码</title>
+    <url>/2024/05/07/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</url>
+    <content><![CDATA[<ul>
+<li><p>按住alt可以对数字进行编码转换</p>
+</li>
+<li><p>例如: Alt+65&#x3D;A</p>
+</li>
+<li><p>利用特殊字符作为密码可以提高安全性</p>
+</li>
+<li><p>ensp终端命令技巧：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">？：可以提示命令</span><br><span class="line">tab:可以补全命令</span><br><span class="line">language chinese: 切换中文</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络分成模型</title>
+    <url>/2024/05/07/%E7%BD%91%E7%BB%9C%E5%88%86%E6%88%90%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<p>﻿+ 网络分层模型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">osi(7层理论)</span><br><span class="line">tcp/ip(5层或4层模型)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>osi</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">7应用层,为应用程序提供接口，使其能够接入到网络中</span><br><span class="line">6表示层,负责数据格式转换，加解密，压缩解压缩</span><br><span class="line">5会话层,增加会话功能，建立，维护，终止端到端的连接</span><br><span class="line">4传输层,将数据进行切割分段，形成数据流</span><br><span class="line">3网络层，通过逻辑ip地址进行寻址定位</span><br><span class="line">2数据链路层，通过物理mac地址进行寻早定位</span><br><span class="line">1物理层，将上层已经封装好的数据转换成比特流在介质上传递</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>tcp&#x2F;ip模型</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5&lt;----&gt;层应用  </span><br><span class="line">4&lt;----&gt;传输层</span><br><span class="line">3&lt;----&gt;物理层</span><br><span class="line">2&lt;----&gt;数据链路层</span><br><span class="line">1&lt;----&gt;物理层</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pdu协议数据单元名称</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  数据在不同的位置，其格式发生变化，且为了便于区分，故名称不一样</span><br><span class="line">传输层(段)、网络层(包)、链路层(帧)、物理层(位)</span><br><span class="line">ps: 数据本身产生于应用层</span><br></pre></td></tr></table></figure>
+
+
+<p>数据封装过程<br>    发送数据(封装)<br>    接收数据(解封装)</p>
+<p>关键参数<br>    传输层(源、目标端口)<br>    网络层(源、目标IP)<br>    链路层(源、目标mac) </p>
+<p>数据接收的处理<br>    1.目标是自己就接收<br>    2.目标不是自己（转发）<br>    3.目标不是自己(丢弃)</p>
+<p>为什么要进行数据封装传输，而不是直接传输裸数据?<br>    1.信息承载<br>    2.数据保护</p>
+<p>各层相关协议<br>    应用层: HTTP、Telnet、SSH<br>    ps:一般都有端口(基于传输层),用户一般能够感觉到使用它<br>    传输层: TCP、UDP<br>    网络层: 存在内部三层结构(有从属关系)<br>    ICMP、IGMP<br>        IP<br>        ARP、RARP<br>    数据链路层:存在内部二层结构(PPP、FR、HDLC,…)<br>        LLC,逻辑链路控制<br>        MAC,媒体访问控制</p>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设备管理</title>
+    <url>/2024/05/07/%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<ul>
+<li>设备管理<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    命令、图形</span><br><span class="line">    远程(多用户管理)：要有网络和权限</span><br><span class="line">    本地(单用户管理)：网络故障或新设备初始化</span><br><span class="line">    流量：业务流量和管理流量</span><br><span class="line">    带内：业务流量和管理流量走同一条链路</span><br><span class="line">    带外：业务流量和管理流量使用不同的链路</span><br><span class="line">    协议:  Telnet、SSH、SNMP、HTTP</span><br><span class="line">    snmp:简单管理网络设备协议(管理与被管理直接)</span><br><span class="line">    v1v2c</span><br><span class="line">    作用: 读(查询设备信息)；写(修改设备的参数)</span><br><span class="line">    HTTP(图形管理，本地远程):超文本传输协议</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">+ 命令权限级别(0~15):</span><br></pre></td></tr></table></figure>
+  0: 访问<br>  1: 监控<br>  2: 配置<br>  3: 管理<br>  权限向下兼容，高的权限包含低的权限</li>
+</ul>
+<pre><code>    
+console控制台配置(本地管理)
+    
+</code></pre>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>路由相关的知识</title>
+    <url>/2024/05/07/%E8%B7%AF%E7%94%B1%E7%9B%B8%E5%85%B3%E7%9A%84%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<ul>
+<li><p>路由的优先级: 它的取值范围为0~255，值越小优先级越高</p>
+</li>
+<li><p>默认的优先级</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">直连网络</th>
+<th align="center">0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">静态路由</td>
+<td align="center">60</td>
+</tr>
+<tr>
+<td align="center">ospf协议</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">is-is协议</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td align="center">rip</td>
+<td align="center">100</td>
+</tr>
+<tr>
+<td align="center">bgp</td>
+<td align="center">255</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>浮动路由: 给路由其设置主线路和备用线路，来提高可靠性</p>
+</li>
+<li><p>负载均衡: 把数据分散到多条链路来实现线路服用</p>
+</li>
+<li><p>路由环路：数据回流的现象(数据发出去有发回来)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">危害</span><br><span class="line">	1.占用网络带宽</span><br><span class="line">	2.开销设备性能</span><br><span class="line">	3.增加转发时延</span><br><span class="line">解决方法</span><br><span class="line">	二层: stp生成数协议解决环路问题</span><br><span class="line">	三层: 路由协议和TTL值</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>默认路由</title>
+    <url>/2024/05/07/%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<ul>
+<li><p>前言: 一个接口可以配置多个ip地址，第一个地址为主地址，其他为子地址</p>
+</li>
+<li><p>例如配置回环接口的ip地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Huawei] interface loopback 1</span><br><span class="line">[Huawei-LoopBack-1] ip address 10.1.1.1 32</span><br><span class="line">[Huawei-LoopBack-1] ip address 10.1.1.2 32 sub</span><br><span class="line">[Huawei-LoopBack-1] ip address 10.1.1.3 32 sub</span><br><span class="line">[Huawei-LoopBack-1] ip address 10.1.1.4 32 sub</span><br><span class="line">[Huawei-LoopBack-1] ip address 10.1.1.5 32 sub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>默认路由</p>
+</li>
+<li><p>默认路由优先级最低(当其他路由没有的时候才会使用)</p>
+</li>
+<li><p>应用于末梢网络(末节络、边缘网络、只有一个进出口的网络)</p>
+</li>
+</ul>
+<p>&lt;pc1[e1]&gt;——[g1]|<br>                   |<br>&lt;pc2[e1]&gt;——[g2]|—-<s1>[g4]—[g0]<R1>[g1]—-[g1]&lt;R2[loopback1]&gt;<br>                   |<br>&lt;pc3[e1]&gt;——[g3]|</p>
+<p>ip地址<br>    pc1: 192.168.1.10&#x2F;24<br>    pc2: 192.168.1.20&#x2F;24<br>    pc3: 192.168.1.30&#x2F;24<br>    R1[g0]: 192.168.1.1&#x2F;24<br>    R1[g1]: 192.168.2.1&#x2F;24<br>    R2[g1]: 192.168.2.2&#x2F;24<br>    R2[loopback1]: 10.1.1.[1~9]&#x2F;32</p>
+<p>R1配置<br>[Huawei] ip route-static 0.0.0.0 0 192.168.2.2 </p>
+<h1 id="0-0-0-0代表任意网段-，0表示任意掩码-，192-168-2-2-下一跳"><a href="#0-0-0-0代表任意网段-，0表示任意掩码-，192-168-2-2-下一跳" class="headerlink" title="0.0.0.0代表任意网段 ，0表示任意掩码 ，192.168.2.2 下一跳"></a>0.0.0.0代表任意网段 ，0表示任意掩码 ，192.168.2.2 下一跳</h1><p>R2配置<br>[Huawei] ip route-static 192.168.1.0 24 192.168.2.1 </p>
+<p>测试</p>
+<p>pc&gt; ping 10.1.1.1 </p>
+<p>pc&gt; tracert 10.1.1.1</p>
+<p>默认路由可以简化网络的配置，但使用不当会造成路由环路等问题</p>
+]]></content>
+      <tags>
+        <tag>ensp</tag>
+      </tags>
+  </entry>
+</search>
