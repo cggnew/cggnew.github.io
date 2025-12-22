@@ -1,0 +1,3000 @@
+<!DOCTYPE html><html><head>
+      <title>fx</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<pre data-role="codeBlock" data-info="test" class="language-test test"><code>删除主机文件的模块? (B)
+A.  delete
+B.  file
+C.  remove
+D.  rm
+
+tasks 作用: (B)
+A.  指定目标主机
+B.  定义执行任务
+C.  设置变量
+D.  引入角色
+
+docker_container 模块端口映射正确写法? (B)
+A.  port: 80:8080
+B.  ports: ["80:8080"]
+C.  ports: "80:8080"
+D.  expose: 80:8080
+
+ls *.txt 作用: (B)
+A.  查看所有文件
+B.  查看当前目录下所有 .txt 文件
+C.  删除所有 .txt 文件
+D.  复制所有 .txt 文件
+
+检查脚本 [auto.sh](auto.sh) 语法(不执行)? (A)
+A.  sh -n [auto.sh](auto.sh)
+B.  sh -v [auto.sh](auto.sh)
+C.  sh -x [auto.sh](auto.sh)
+D.  sh --check [auto.sh](auto.sh)
+
+until循环count等于5才退出: (A)
+A.  count=1; until [  $count -eq 5 ]; do echo $ count; count=$((count+1)); done
+B.  count=1; until ((count == 5)); do echo  $count; count=$ ((count+1)); done
+C.  count=1; until [  $count == 5 ]; do echo $ count; count=$((count+1)); done
+D.  以上三项均正确
+
+判断进程是否运行，正确写法是? (B)
+A.  pid=$(ps -ef | grep nginx)
+B.  pid=$(pgrep nginx)
+C.  pid=$(systemctl status nginx)
+D.  pid=$(which nginx)
+
+awk 输出 3–10 行的正确写法? (B)
+A.  awk '3,10' file
+B.  awk 'NR&gt;=3 &amp;&amp; NR&lt;=10' file
+C.  awk 'NR==3-10' file
+D.  awk '3&lt;=NR&lt;=10' file
+
+grep "error" log.txt: (A)
+A.  查找包含error的行
+B.  删除包含error的行
+C.  替换error
+D.  统计error次数
+
+ansible.cfg作用: (B)
+A.  存储主机列表
+B.  配置默认参数
+C.  定义任务
+D.  管理角色
+
+Shell 中 until 语句的含义是? (B)
+A.  当条件为真执行
+B.  当条件为假执行
+C.  无限循环
+D.  执行一次
+
+playbook 中 serial 参数作用是? (C)
+A.  设置重试次数
+B.  设置任务超时
+C.  控制并发主机数量
+D.  控制任务重启次数
+
+要设置环境变量 MYVAR 为 hello world，正确的方式是? (C)
+A.  MYVAR="hello world"
+B.  set MYVAR="hello world"
+C.  export MYVAR="hello world"
+D.  setenv MYVAR="hello world"
+
+awk 设置输出分隔符为“|”用法是? (C)
+A.  -F '|'
+B.  -S '|'
+C.  -v OFS='|'
+D.  -v FS='|'
+
+Ansible 中执行 playbook 的命令是? (B)
+A.  ansible-run
+B.  ansible-playbook
+C.  playbook-run
+D.  run-ansible
+
+模板中条件判断语法? (A)
+A.  {% if 条件 %} 内容 {% endif %}
+B.  if (条件) then 内容
+C.  $if 条件 then 内容
+D.  when: 条件
+
+创建符号链接模块是? (B)
+A.  link
+B.  file
+C.  symlink
+D.  ln
+
+Jinja2 输出变量 username: (B)
+A.  {% username %}
+B.  {{ username }}
+C.  {username}
+D.  $username
+
+以下关于 awk 的说法正确的是? (C)
+A.  awk 的 -n 参数表示“不打印自动输出”
+B.  awk 的 -n 参数表示“打印行号”
+C.  awk 不存在 -n 参数，-n 是 sed 的选项
+D.  awk -n 用于静默模式
+
+删除角色 nginx 命令: (A)
+A.  ansible-galaxy remove nginx
+B.  ansible-galaxy delete nginx
+C.  ansible-galaxy uninstall nginx
+D.  ansible-galaxy rm nginx
+
+在 inventory 文件中定义组使用? (A)
+A.  [web]
+B.  {web}
+C.  (web)
+D.  &lt;web&gt;
+
+删除文件夹及其内容正确方式? (C)
+A.  rm folder
+B.  rm -f folder
+C.  rm -r folder
+D.  rmdir folder
+
+在 Jinja2 模板中，表示条件语句的标记是? (A)
+A.  {% ... %}
+B.  {{ ... }}
+C.  ##
+D.  $$
+
+sed 命令中 s/old/new/g 表示? (B)
+A.  删除 old
+B.  替换所有 old 为 new
+C.  替换首个 old 为 new
+D.  替换最后一个 old 为 new
+
+以下 awk 语句中，哪一个可以正确打印文件每行的第一个字段和第三个字段? (B)
+A.  awk '{print  $1 $ 3}' file
+B.  awk '{print  $1, $ 3}' file
+C.  awk '{sum= $1+$ 3}' file
+D.  awk 'print  $1 $ 3' file
+
+定义 var="linux": (B)
+A.  var = "linux"
+B.  var="linux"
+C.  set var="linux"
+D.  export var="linux"
+
+删除文件第5行命令是? (A)
+A.  sed '5d' file
+B.  sed 'd5' file
+C.  sed 'del 5' file
+D.  sed -d 5 file
+
+查看内存占用率最合适的命令? (B)
+A.  mem
+B.  top
+C.  free -m
+D.  df -h
+
+为任务添加标签的关键字? (A)
+A.  tags
+B.  label
+C.  mark
+D.  name
+
+Ansible Playbook 使用什么格式定义自动化任务? (B)
+A.  XML
+B.  YAML
+C.  JSON
+D.  INI
+
+表示系统发行版的 Ansible 变量是? (B)
+A.  ansible_os_family
+B.  ansible_distribution
+C.  ansible_system
+D.  ansible_platform
+
+copy文件: (A)
+A.  cp file
+1.txt file2.txt
+B.  mv file
+1.txt file2.txt
+C.  copy file
+1.txt file2.txt
+D.  du file
+1.txt file2.txt
+
+Jinja2 中为变量设置默认值用? (A)
+A.  default()
+B.  fallback()
+C.  setdefault()
+D.  value()
+
+web组且CentOS执行任务的when条件: (A)
+A.  when: "'web' in group_names and ansible_distribution == 'CentOS'"
+B.  when: group == 'web' and os == 'CentOS'
+C.  when: group_names is 'web' and ansible_os == 'CentOS'
+D.  when: inventory_group == 'web' and ansible_distribution = 'CentOS'
+
+捕获命令输出正确写法? (B)
+A.  res=ls -l
+B.  res=$(ls -l)
+C.  res=$ls -l
+D.  res="ls -l"
+
+管理SELinux策略模块: (C)
+A.  selinux
+B.  setsebool
+C.  semanage
+D.  selinux_policy
+
+查看当前所在目录路径? (B)
+A.  dir
+B.  pwd
+C.  cd
+D.  ls
+
+变量可以在 Ansible 的哪些位置定义? (C)
+A.  仅在 Playbook 中
+B.  仅在命令行参数中
+C.  主机组和主机的 group_vars 和 host_vars 目录中
+D.  仅在 play 中
+
+将数组 arr=(a b c d) 用逗号拼接输出? (A)
+A.  echo ${arr[*]} | tr ' ' ','
+B.  echo ${arr[@]} | sed 's/ /,/g'
+C.  IFS=,; echo ${arr[*]}
+D.  join ',' ${arr[@]}
+
+指定任务在 db 组执行: (A)
+A.  hosts: db
+B.  group: db
+C.  target: db
+D.  server: db
+
+删除含前导空格的#注释行: (B)
+A.  sed '/^#/d' text.txt
+B.  sed '/^\s*#/d' text.txt
+C.  sed 's/^#.*//' text.txt
+D.  sed '/#.*/d' text.txt
+
+sed 将每行行首添加#的命令? (A)
+A.  sed 's/^/#/'
+B.  sed 's/$/#/'
+C.  sed '/#/g'
+D.  sed 's/*/#/'
+
+管理服务状态的模块: (A)
+A.  service
+B.  system
+C.  daemon
+D.  start
+
+把错误输出重定向到 error.log? (A)
+A.  command 2&gt; error.log
+B.  command &gt; error.log 2&gt;&amp;1
+C.  command error.log 2&gt;
+D.  command &gt;&amp;2 error.log
+
+下列哪个变量表示当前 Shell 的路径? (B)
+A.  BASH
+B.  SHELL
+C.  KSH
+D.  C
+
+Shell 脚本中 i=$((i+1)) 的作用是? (A)
+A.  i 自增 1
+B.  i 减 1
+C.  i 乘 1
+D.  i 除 1
+
+在 Shell 中，下列哪个条件表达式可以判断变量 str 是否为空? (C)
+A.  if [ str == "" ]
+B.  if [[ str = "" ]]
+C.  if [ -z "$str" ]
+D.  if [ -n $str ]
+
+安装 RPM 用: (B)
+A.  apt
+B.  yum
+C.  install
+D.  package
+
+在 Ansible Playbook 中，指定目标主机的属性是? (B)
+A.  在命令行参数中指定
+B.  hosts
+C.  tasks
+D.  groups
+
+任务依赖 install_pkg: (C)
+A.  depends_on: install_pkg
+B.  after: install_pkg
+C.  when: install_pkg is succeeded
+D.  tags: ["after_install"]
+
+sudo执行ls /root: (A)
+A.  ansible all -m command -a "ls /root" -b
+B.  ansible all -m shell -a "sudo ls /root"
+C.  ansible all -m command -a "sudo ls /root"
+D.  ansible all -m command -a "ls /root" --sudo
+
+查找WARNING且行号在100-200之间的行，正确命令是? (B)
+A.  grep "WARNING" app.log | sed -n '100,200p'
+B.  grep -n "WARNING" app.log | awk -F ":" ' $1&gt;=100 &amp;&amp; $ 1&lt;=200'
+C.  grep "WARNING" app.log -A100 -B100
+D.  sed -n '100,200p' app.log | grep "WARNING"
+
+echo "Hello" 会? (A)
+A.  输出“Hello”并自动换行
+B.  仅输出“Hello”不换行
+C.  提示语法错误
+D.  清空屏幕
+
+以下哪个命令可以准确删除第 20-100 行? (B)
+A.  sed -n '1,19p;101,$p' file
+B.  sed '20,100d' file
+C.  awk 'NR&lt;20 || NR&gt;100' file
+D.  grep -v "^20|^21|..." file
+
+“事实变量”作用: (B)
+A.  存储自定义配置
+B.  自动获取受管主机信息
+C.  定义任务顺序
+D.  控制任务是否执行
+
+执行 Playbook: (B)
+A.  ansible-run site.yml
+B.  ansible-playbook site.yml
+C.  playbook-exec site.yml
+D.  run-playbook site.yml
+
+查看脚本执行过程显示每行命令? (C)
+A.  sh -v [script.sh](script.sh)
+B.  sh -n [script.sh](script.sh)
+C.  sh -x [script.sh](script.sh)
+D.  sh -e [script.sh](script.sh)
+
+sed只替换第10行port=80为port=8080: (A)
+A.  sed '10s/port=80/port=8080/' config.ini
+B.  sed 's/port=80/port=8080/10' config.ini
+C.  sed '10,/port=80/s//port=8080/' config.ini
+D.  sed '/port=80/10s//port=8080/' config.ini
+
+测试 web 组连通性: (A)
+A.  ansible web -m ping
+B.  ansible web -m test
+C.  ansible ping web
+D.  ansible test web
+
+Playbook语法检查: (B)
+A.  ansible-playbook --check site.yml
+B.  ansible-playbook --syntax-check site.yml
+C.  ansible-playbook -n site.yml
+D.  ansible-playbook --test site.yml
+
+awk筛选第四列&gt;5000: (D)
+A.  awk '$4&gt;5000' user.txt
+B.  awk '{if( $4&gt;5000) print $ 0}' user.txt
+C.  awk -F ' ' '$4&gt;5000 {print}' user.txt
+D.  以上三项均正确
+
+Shell 中用于赋值的算术运算符是? (D)
+A.  +
+B.  -
+C.  ==
+D.  =
+
+判断一个文件是否存在且为普通文件的选项是? (C)
+A.  -d
+B.  -e
+C.  -f
+D.  -r
+
+实现条件控制结束的关键字是? (D)
+A.  endif
+B.  end
+C.  done
+D.  fi
+
+在 Ansible 中用于控制服务启动/停止的标准模块是? (A)
+A.  service
+B.  systemd
+C.  init
+D.  start
+
+遍历字典 users 的写法? (A)
+A.  loop: {{ users | dict2items }}
+B.  with_dict: {{ users }}
+C.  loop: {{ users.keys() }}
+D.  with_items: {{ users.values() }}
+
+复制文件模块: (B)
+A.  move
+B.  copy
+C.  transfer
+D.  send
+
+模板文件的后缀是? (B)
+A.  .yaml
+B.  .j2
+C.  .tpl
+D.  .jinja
+
+显示匹配行及其上下3行? (B)
+A.  -A3 -B3
+B.  -C3
+C.  -N3
+D.  -L3
+
+查找不包含 error 的行? (B)
+A.  grep "!error" log.txt
+B.  grep -v "error" log.txt
+C.  grep "not error" log.txt
+D.  grep --exclude "error" log.txt
+
+Ansible 中用于任务顺序触发的正确方式是? (B)
+A.  depends_on
+B.  handlers + notify
+C.  priority 字段
+D.  before 指令
+
+Ansible 默认使用什么协议与受管主机通信? (C)
+A.  FTP
+B.  HTTP
+C.  SSH
+D.  Telnet
+
+触发 handler 的关键字是? (A)
+A.  notify
+B.  call
+C.  handler
+D.  trigger
+
+若要将新的环境变量 VAR 加入当前 Shell，正确的命令是? (B)
+A.  set VAR=value
+B.  export VAR=value
+C.  VAR=value
+D.  echo VAR=value
+
+Jinja2 中判断变量为 True 的语法是? (A)
+A.  var == True
+B.  if var = true
+C.  if var is true
+D.  var eq true
+
+if 语句的基本语法是? (A)
+A.  if [ condition ]
+B.  if ( condition )
+C.  if { condition }
+D.  if &lt; condition &gt;
+
+在 Shell 脚本中，$2 表示? (B)
+A.  参数个数
+B.  第二个参数
+C.  第二行输入
+D.  第二个进程
+
+fetch拉取日志: (D)
+A.  正确
+B.  错误
+C.  copy模块错误
+D.  按主机创建子目录
+
+计算 2+3: (B)
+A.  echo 2+3
+B.  echo $((2+3))
+C.  echo 2+3 | bc
+D.  calc 2+3
+
+输出带换行符“Hello\nWorld”正确写法? (B)
+A.  echo "Hello\nWorld"
+B.  echo -e "Hello\nWorld"
+C.  echo Hello\nWorld
+D.  echo -n "Hello\nWorld"
+
+判断是否为目录? (A)
+A.  [ -d "$file" ]
+B.  [ -f "$file" ]
+C.  [ -e "$file" ]
+D.  [ -r "$file" ]
+
+Shell 中的逻辑与运算符是? (B)
+A.  +
+B.  &amp;&amp;
+C.  *
+D.  -
+
+ansible 命令显示最详细日志用? (D)
+A.  -v
+B.  -vv
+C.  -vvv
+D.  -vvvv
+
+可在输出中控制输出格式的命令是? (B)
+A.  echo
+B.  printf
+C.  read
+D.  cat
+
+测试主机连通性命令? (A)
+A.  ansible all -m ping
+B.  ansible all -m test
+C.  ansible -m ping *
+D.  ansible ping all
+
+函数中声明局部变量的关键字是? (A)
+A.  local
+B.  declare
+C.  export
+D.  static
+
+在 playbook 中循环任务使用? (A)
+A.  loop
+B.  iterate
+C.  repeat
+D.  for
+
+for 语句遍历数组元素的正确写法是? (D)
+A.  for i in {
+1..5}; do echo i; done
+B.  for i in (1 2 3 4 5); do echo i; done
+C.  for i in [1 2 3 4 5]; do echo i; done
+D.  for i in 1 2 3 4 5; do echo i; done
+
+查看 copy 模块文档: (B)
+A.  ansible-help copy
+B.  ansible-doc copy
+C.  ansible-man copy
+D.  ansible-info copy
+
+sed 替换所有 abc 为 xyz 的正确写法? (C)
+A.  sed 's/abc/xyz'
+B.  sed 's/abc/xyz/'
+C.  sed 's/abc/xyz/g'
+D.  sed 'replace abc xyz'
+
+awk 中  $2&gt;100 {print $ 0} 表示? (A)
+A.  打印第二列大于100的行
+B.  打印第二列等于100的行
+C.  打印第二列小于100的行
+D.  打印全部行
+
+Jinja2 中 for 循环的正确写法是? (A)
+A.  {% for i in list %}{% endfor %}
+B.  for i in list:
+C.  [for i in list]
+D.  loop(i)
+
+直接修改原文件的 sed 选项? (B)
+A.  -n
+B.  -i
+C.  -e
+D.  -f
+
+Ansible 默认的配置文件是? (A)
+A.  ansible.cfg
+B.  ansible.conf
+C.  ansible.yml
+D.  ansible.ini
+
+使用 sudo 权限: (B)
+A.  sudo: yes
+B.  become: yes
+C.  root: yes
+D.  admin: yes
+
+在模板中引用变量的语法是? (B)
+A.  $var
+B.  {{ var }}
+C.  [% var %]
+D.  &lt;&lt; var &gt;&gt;
+
+Ansible 默认通信协议: (B)
+A.  HTTP
+B.  SSH
+C.  FTP
+D.  Telnet
+
+哪种输出重定向写法会将输出追加到文件末尾? (B)
+A.  command &gt; filename
+B.  command &gt;&gt; filename
+C.  command &lt; filename
+D.  command &lt;&lt; filename
+
+禁止 root 登录 SSH 正确修改字段? (B)
+A.  DenyRootLogin no
+B.  PermitRootLogin no
+C.  RootLogin off
+D.  RootDeny true
+
+管理 apt 源的模块是? (A)
+A.  apt_repository
+B.  apt_key
+C.  apt_config
+D.  apt_source
+
+以下哪个命令可以统计当前目录及子目录中所有 .log 文件的数量? (B)
+A.  ls *.log | wc -l
+B.  find . -name "*.log" -type f | wc -l
+C.  grep ".log" -r . | wc -l
+D.  du -a | grep ".log" | wc -l
+
+删除 testdir 目录及其文件: (C)
+A.  rm testdir
+B.  rm -f testdir
+C.  rm -r testdir
+D.  rmdir testdir
+
+获取数组长度的正确方法是? (C)
+A.  ${array[@]}
+B.  ${array[*]}
+C.  ${#array[@]}
+D.  ${array[#]}
+
+Shell 脚本中，判断两个整数是否相等的选项是? (A)
+A.  -eq
+B.  -lt
+C.  -ne
+D.  -gt
+
+创建目录使用哪个模块? (C)
+A.  mkdir
+B.  make
+C.  file
+D.  directory
+
+read -p "请输入:" var: (A)
+A.  提示并获取输入存入var
+B.  仅输出提示
+C.  清空var
+D.  显示var
+
+从文件逐行读取内容正确的是? (A)
+A.  while read line; do ...; done &lt; file
+B.  for line in file; do ...; done
+C.  cat file | while line; do ...; done
+D.  read file | while read line; do ...; done
+
+设置冒号为字段分隔符? (A)
+A.  awk -F ':' '{print $1}' data.txt
+B.  awk 'FS=":" {print $1}'
+C.  awk '{FS=":"; print $1}'
+D.  awk -d ':' '{print $1}'
+
+awk 中 -F ',' 的含义是? (A)
+A.  指定逗号为分隔符
+B.  忽略逗号
+C.  删除逗号
+D.  替换逗号
+
+循环遍历列表: (A)
+A.  loop
+B.  for
+C.  cycle
+D.  repeat
+
+创建角色的命令是? (A)
+A.  ansible-galaxy init
+B.  ansible-galaxy new
+C.  ansible-role create
+D.  ansible init role
+
+以下哪种方式能够正确输出 2 到 10 之间的所有偶数? (D)
+A.  for i in {
+1..10}; do if ((i%2==0)); then echo $i; fi; done
+B.  for i in seq 2 2 10; do echo i; done
+C.  for i in  $(seq 1 2 10); do echo $ i; done
+D.  for i in {2..10..2}; do echo $i; done
+
+禁用主机事实收集的配置项是? (A)
+A.  gather_facts: false
+B.  collect_facts: no
+C.  gather_info: false
+D.  facts: off
+
+Ansible 中查看模块用法的命令是? (B)
+A.  ansible-help
+B.  ansible-doc
+C.  ansible-module
+D.  ansible-info
+
+统计第二列等于 admin 的行数? (A)
+A.  awk '$2=="admin" {count++} END{print count}' data.txt
+B.  awk '$2=admin {count++} END{print count}' data.txt
+C.  awk 'if($2=="admin") count++ END{print count}' data.txt
+D.  awk '$2=="admin" count++ END{print count}' data.txt
+
+复制文件到远程主机使用模块? (A)
+A.  copy
+B.  fetch
+C.  file
+D.  template
+
+handler 任务执行条件是? (B)
+A.  每次任务都执行
+B.  仅在任务发生变化时执行
+C.  每次失败时执行
+D.  在循环中执行
+
+printf 命令中用于输出字符串的格式化符号是? (A)
+A.  %s
+B.  %d
+C.  %f
+D.  %x
+
+Playbook 文件格式: (C)
+A.  XML
+B.  JSON
+C.  YAML
+D.  INI
+
+删除数组中某个元素的命令是? (B)
+A.  remove array[1]
+B.  unset array[1]
+C.  del array[1]
+D.  erase array[1]
+
+环境变量 PATH 中，冒号分隔的各个目录的意义是? (C)
+A.  用户的主目录
+B.  系统的配置文件目录
+C.  可执行文件的搜索路径
+D.  常用工具的安装目录
+
+Bash 中，以下写法能正确比较整数的是? (B)
+A.  if [ a &gt; b ]
+B.  if ((a &gt; b))
+C.  if [  $a &gt; $ b ]
+D.  if a &gt; b
+
+判断 file_size 大于 1024? (C)
+A.  when: file_size &gt; 1024
+B.  when: {{ file_size }} &gt; 1024
+C.  when: file_size | int &gt; 1024
+D.  when: file_size is greater than 1024
+
+使用 ansible-galaxy 搜索角色用? (B)
+A.  ansible-galaxy list
+B.  ansible-galaxy search
+C.  ansible-galaxy find
+D.  ansible-galaxy query
+
+正确统计当前用户登录次数的是? (C)
+A.  who | wc
+B.  whoami | wc
+C.  who | grep "$(whoami)" | wc -l
+D.  loginctl count
+
+下列哪个是 Ansible 中执行带管道命令的正确模块? (B)
+A.  command
+B.  shell
+C.  exec
+D.  run
+
+管理容器镜像的模块? (A)
+A.  docker_image
+B.  docker_container
+C.  podman_image
+D.  container
+
+role判断admin: (A)
+A.  {% if role == 'admin' %}管理员{% else %}普通用户{% endif %}
+B.  {{ role == 'admin' ? '管理员' : '普通用户' }}
+C.  {% if role is 'admin' %}管理员{% else %}普通用户{% endif %}
+D.  {{ if role == 'admin' then '管理员' else '普通用户' }}
+
+grep 命令中忽略大小写的参数是? (A)
+A.  -i
+B.  -v
+C.  -n
+D.  -l
+
+在第3行后插入“new line”? (A)
+A.  sed '3a new line' file.txt
+B.  sed '3i new line' file.txt
+C.  sed '3c new line' file.txt
+D.  sed '3s/^/new line/' file.txt
+
+判断字符串 str 是否等于 "linux"? (A)
+A.  if [ "$str" = "linux" ]; then
+B.  if [ "$str" == "linux" ]; then
+C.  if ((str == "linux")); then
+D.  if [ $str -eq "linux" ]; then
+
+判断变量是否为数字正确写法? (B)
+A.  if [ $x -eq number ]
+B.  if [[  $x =~ ^[0-9]+$  ]]
+C.  if number $x
+D.  test number $x
+
+register 关键字的作用是? (B)
+A.  定义主机清单文件
+B.  保存任务执行结果
+C.  定义变量
+D.  设置条件语句
+
+awk 中 NR 表示? (A)
+A.  当前行号
+B.  当前列号
+C.  文件总数
+D.  文件名
+
+ansible-galaxy 作用: (B)
+A.  执行Playbook
+B.  管理角色
+C.  测试连通性
+D.  查看帮助
+
+Ansible 中收集主机信息的模块是? (A)
+A.  setup
+B.  gather
+C.  facts
+D.  info
+
+Ansible 中用于创建 Docker 容器的模块是? (A)
+A.  docker_container
+B.  container
+C.  docker
+D.  create_container
+
+遍历一个目录中所有文件的 for 语句写法是? (C)
+A.  for file in (ls /path/to/directory); do echo file; done
+B.  for file in ls /path/to/directory; do echo file; done
+C.  for file in /path/to/directory/*; do echo file; done
+D.  for file in /path/to/directory; do echo file; done
+
+关于 Ansible 的 Ad Hoc 命令，描述正确的是? (D)
+A.  只能在特定时间运行
+B.  在单个主机上并行执行
+C.  用于创建和管理主机清单文件
+D.  用于手动执行特定任务
+
+Playbook 指定远程执行用户为 admin? (A)
+A.  remote_user: admin
+B.  user: admin
+C.  ssh_user: admin
+D.  execute_user: admin
+
+将 date 写入 time.txt(覆盖): (B)
+A.  date &gt;&gt; time.txt
+B.  date &gt; time.txt
+C.  date &lt; time.txt
+D.  date | time.txt
+
+用于显示 Ansible Playbook 中某个任务输出结果的模块是? (A)
+A.  debug
+B.  output
+C.  print
+D.  show
+
+awk 过滤第 5 行之后的内容，正确写法是? (B)
+A.  awk 'NR &lt; 4' file
+B.  awk 'NR &gt; 4' file
+C.  awk 'NR &gt;= 4' file
+D.  awk '{if(NR&gt;=4) print}' file
+
+用于加载配置文件的命令是? (C)
+A.  exec
+B.  load
+C.  source
+D.  Include
+
+给 [test.sh](test.sh) 加可执行权限: (C)
+A.  chmod +r [test.sh](test.sh)
+B.  chmod +w [test.sh](test.sh)
+C.  chmod +x [test.sh](test.sh)
+D.  chmod +a [test.sh](test.sh)
+
+多个条件的逻辑或关系运算符是? (A)
+A.  ||
+B.  &amp;&amp;
+C.  or
+D.  and
+
+判断a.txt是否为普通文件: (B)
+A.  判断是否目录
+B.  判断是否普通文件
+C.  判断是否可读
+D.  判断是否可写
+
+忽略任务错误继续执行使用? (A)
+A.  ignore_errors: yes
+B.  skip_error: yes
+C.  continue_on_fail: true
+D.  error_ignore: on
+
+在 playbook 中引入外部变量文件使用? (B)
+A.  include_vars
+B.  vars_files
+C.  vars_include
+D.  import_vars
+
+定义数组正确的是? (A)
+A.  array=(1 2 3 4 5)
+B.  array=[1,2,3,4,5]
+C.  array={1 2 3 4 5}
+D.  array=(1,2,3,4,5)
+
+以下哪个写法是 Bash 中最规范的区间判断逻辑? 判断 num 是否在 10 到 20 之间。 (D)
+A.  [  $num -gt 10 -a $ num -lt 20 ]
+B.  test  $num -gt 10 -a $ num -lt 20
+C.  [[  $num -gt 10 &amp;&amp; $ num -lt 20 ]]
+D.  (($num &gt; 10 &amp;&amp; num &lt; 20))
+
+查找当前目录所有 .sh 文件并输出完整路径: (B)
+A.  ls *.sh
+B.  find ./ -name "*.sh" -type f
+C.  grep ".sh" .
+D.  sh find . *.sh
+
+Jinja2 保留 2 位小数: (C)
+A.  {{ price | round(2) }}
+B.  {{ price | format("%.2f") }}
+C.  {{ "%.2f" | format(price) }}
+D.  {{ price | decimal(2) }}
+
+使用 sudo 权限? (B)
+A.  sudo: yes
+B.  become: yes
+C.  sudo_user: root
+D.  become_user: root
+
+取消定义变量 var? (A)
+A.  unset var
+B.  delete var
+C.  remove var
+D.  clear var
+
+只执行带某标签的任务命令? (C)
+A.  ansible-playbook site.yml --tags "config"
+B.  ansible-playbook site.yml --run config
+C.  ansible-playbook site.yml -t config
+D.  ansible-playbook site.yml -l config
+
+Ansible中执行命令的模块? (A)
+A.  command
+B.  exec
+C.  run
+D.  shell
+
+select opt in "yes" "no"; do echo $opt; done 表示? (D)
+A.  if 判断
+B.  case 选择
+C.  for 循环
+D.  交互菜单选择
+
+在 RHEL 系统上安装软件包应使用? (B)
+A.  apt
+B.  yum
+C.  dnf
+D.  zypper
+
+Shell 中统计目录中文件数量最安全的写法是? (B)
+A.  ls | wc -l
+B.  find . -type f | wc -l
+C.  du -a | wc -l
+D.  echo $(ls) | wc -w
+
+统计 file.txt 行数: (A)
+A.  wc -l file.txt
+B.  wc -w file.txt
+C.  wc -c file.txt
+D.  wc -m file.txt
+
+读取文件第一行正确方式是? (D)
+A.  head file
+B.  head -1 file
+C.  head file -n1
+D.  head -n1 file
+
+将 date 输出追加到 log.txt? (A)
+A.  date &gt;&gt; log.txt
+B.  date &gt; log.txt
+C.  date 2&gt;&gt; log.txt
+D.  date | tee -a log.txt
+
+查看前5行: (A)
+A.  head -5 file.txt
+B.  tail -5 file.txt
+C.  cat -5 file.txt
+D.  more -5 file.txt
+
+在 GNU sed 中删除以 # 开头(包含前置空格)的行，规范写法是? (B)
+A.  sed '/^\s*#/d' file
+B.  sed '/^[[:space:]]*#/d' file
+C.  sed 's/#.*//' file
+D.  sed '/^#/d' file
+
+grep '^test' file.txt 命令表示? (B)
+A.  匹配包含 test 的行
+B.  匹配以 test 开头的行
+C.  匹配以 test 结尾的行
+D.  匹配不含 test 的行
+
+printf 输出整数123和字符串 test? (A)
+A.  printf "数字:%d，名称:%s" 123 "test"
+B.  printf "数字:123，名称:test"
+C.  printf "数字:%s，名称:%d" 123 "test"
+D.  printf "数字:%d，名称:%s\n" "test" 123
+
+用于实现多条件选择语句的是? (C)
+A.  if
+B.  else
+C.  case
+D.  for
+
+执行 for i in 1 2 3… 输出? (C)
+A.  1
+B.  1 2
+C.  1 2 3
+D.  3 2 1
+
+Playbook中hosts: all表示在清单所有主机上执行任务。(A)
+A对
+B错
+
+awk '{print $2}' 输出第二个字段。(A)
+A对
+B错
+
+template 模块会自动渲染 Jinja2 模板并复制到受管主机。(A)
+A对
+B错
+
+loop与with_items功能相同。(A)
+A对
+B错
+
+for 循环中 do 和 done 是必须出现的保留字。(A)
+A对
+B错
+
+file模块只能创建文件，不能创建目录或删除文件。(B)
+A对
+B错
+
+source命令和.(点号)命令功能相同，均可用于加载配置文件并使配置在当前Shell生效。(A)
+A对
+B错
+
+authorized_key 添加公钥实现免密登录。(A)
+A对
+B错
+
+rm testdir 会删除整个 testdir 目录及其中所有文件。(B)
+A对
+B错
+
+Jinja2中default过滤器用于设置变量默认值。(A)
+A对
+B错
+
+数组 arr=("A" "B" "C") 中，${arr[3]} 会返回 "C"。(B)
+A对
+B错
+
+Shell脚本中，read -p "提示信息" var命令可以在获取用户输入时显示自定义提示文本。(A)
+A对
+B错
+
+touch 文件 已存在时更新访问时间，不会更新修改时间。(B)
+A对
+B错
+
+register 关键字可以用来保存任务执行结果供后续任务使用。(A)
+A对
+B错
+
+ls *.sh 会列出当前目录以及子目录中的所有 .sh 文件。(B)
+A对
+B错
+
+--diff 显示配置文件前后差异。(A)
+A对
+B错
+
+now() 函数可直接获取当前系统时间。(B)
+A对
+B错
+
+ansible-playbook demo.yml 会按照 Playbook 的顺序执行所有任务。(A)
+A对
+B错
+
+mv old new 会移动旧文件到新路径，也能重命名文件。(A)
+A对
+B错
+
+tail -2 file.txt 会显示最后2行。(A)
+A对
+B错
+
+grep -r keyword /var 可以递归搜索 /var 下所有文件。(A)
+A对
+B错
+
+在Shell中，echo $USER 会显示当前登录用户。(A)
+A对
+B错
+
+for i in 1 2 3; do echo $i; done 会依次输出 1 2 3。(A)
+A对
+B错
+
+apt 模块也可以用于 CentOS。(B)
+A对
+B错
+
+给脚本添加执行权限应使用 chmod 777 script.sh，这是最安全的方式。(B)
+A对
+B错
+
+环境变量 PATH 用来记录当前工作目录的路径。(B)
+A对
+B错
+
+facts变量是用户自定义的变量。(B)
+A对
+B错
+
+ansible-galaxy search 可以搜索 Galaxy 上的角色。(A)
+A对
+B错
+
+firewalld 模块可以设置端口规则，但不能立即生效。(B)
+A对
+B错
+
+rm file 默认会提示确认是否删除。(B)
+A对
+B错
+
+awk '{print $NF}' 会打印每一行的最后一个字段。(A)
+A对
+B错
+
+使用export VAR=value命令设置的环境变量，仅在当前Shell会话及子Shell中生效，无法永久保存。(A)
+A对
+B错
+
+yum 模块也可以在 Ubuntu 系统中正常使用。(B)
+A对
+B错
+
+cat file.txt 适合查看大文件内容。(B)
+A对
+B错
+
+grep "error" log.txt 只能匹配整行完全等于 error 的内容。(B)
+A对
+B错
+
+Jinja2 中 upper 过滤器可将字符串转换为全大写。(A)
+A对
+B错
+
+awk '{print NR, $0}' file.txt 会打印行号和整行内容。(A)
+A对
+B错
+
+file 模块 state: absent 会删除文件。(A)
+A对
+B错
+
+chmod 777 file.txt 是一种安全的权限设置方式，适合所有场景。(B)
+A对
+B错
+
+printf命令输出字符串时，默认会自动添加换行符，无需手动指定\n。(B)
+A对
+B错
+
+docker_image 模块不能删除镜像。(B)
+A对
+B错
+
+"HELLO" | lower 输出 hello。(A)
+A对
+B错
+
+vars: 部分定义的变量只能在当前任务中使用，无法被其他任务读取。(B)
+A对
+B错
+
+diff file1 file2 能比较两个文件是否相同。(A)
+A对
+B错
+
+Playbook 中 handlers 必须立即执行，不需要 notify。(B)
+A对
+B错
+
+ansible-galaxy list 显示本地安装角色。(A)
+A对
+B错
+
+ls -l 只显示文件权限，不显示时间戳。(B)
+A对
+B错
+
+sed 's/foo/bar/g' file.txt 会替换所有 foo，并且直接修改文件内容。(B)
+A对
+B错
+
+head -3 file.txt 显示前3行内容。(A)
+A对
+B错
+
+Ansible 控制节点必须能够 ping 通受管主机才能执行任务。(B)
+A对
+B错
+
+join 过滤器可以把列表拼接成字符串。(A)
+A对
+B错
+
+register用于捕获任务执行结果并存为字典类型变量。(A)
+A对
+B错
+
+Playbook 若任务失败默认跳过继续执行。(B)
+A对
+B错
+
+grep -v "pattern" file命令用于查找file中包含pattern的行，并输出这些行。(B)
+A对
+B错
+
+ansible-doc docker_container命令可以查看模块文档。(A)
+A对
+B错
+
+awk脚本中，NR表示当前处理的行号，NF表示当前行的字段总数。(A)
+A对
+B错
+
+grep "hello" 会匹配包含 hello 的所有行。(A)
+A对
+B错
+
+awk -F ',' '{print $1, $3}' data.csv命令以逗号为分隔符，输出data.csv的第1和第3列。(A)
+A对
+B错
+
+事实变量(facts)会自动收集系统信息，不需要用户定义。(A)
+A对
+B错
+
+Ansible 控制节点必须是 Linux 或类 Unix 系统，但不能是 Windows。(B)
+A对
+B错
+
+become: yes 表示使用 sudo 权限执行任务。(A)
+A对
+B错
+
+Jinja2 中使用变量需写成 ${var}。(B)
+A对
+B错
+
+ansible-playbook -v 只显示错误，不显示命令细节。(B)
+A对
+B错
+
+ansible-galaxy init 会创建一个角色的基本目录结构。(A)
+A对
+B错
+
+become_user: root 不需要 become: yes 就能生效。(B)
+A对
+B错
+
+Ansible 控制节点必须能 ping 通受管主机，否则无法使用。(B)
+A对
+B错
+
+copy 模块可以复制本地文件并自动创建目标目录。(A)
+A对
+B错
+
+while 循环需要使用 incre++ 的语法更新变量。(B)
+A对
+B错
+
+docker_container 模块可以启动容器，但不能停止容器。(B)
+A对
+B错
+
+在Shell数组中，${arr[*]}和${arr[@]}的作用完全一致，均会将数组元素以空格分隔拼接成字符串。(B)
+A对
+B错
+
+在 Playbook 中 tasks 字段可以省略不写。(B)
+A对
+B错
+
+handler 会立即执行，不受更改触发影响。(B)
+A对
+B错
+
+使用 source 命令加载配置文件时，不会影响当前 Shell 的环境变量。(B)
+A对
+B错
+
+在Shell脚本中，缺少开头的 #!/bin/bash 会导致脚本永远无法执行。(B)
+A对
+B错
+
+ansible.cfg 的 remote_user 设置默认登录用户。(A)
+A对
+B错
+
+sed '3d' file.txt命令会删除file.txt的第3行，并直接修改原文件内容。(B)
+A对
+B错
+
+使用 VAR=abc 定义的变量，不需要使用 $VAR 就能直接输出 abc。(B)
+A对
+B错
+
+loop.index可用于获取循环索引，从1开始。(A)
+A对
+B错
+
+ansible web -m apt -a "name=nginx state=present" 可以在 CentOS 主机上安装 nginx。(B)
+A对
+B错
+
+ansible-doc -s service 显示 service 模块参数格式。(A)
+A对
+B错
+
+docker_container 模块只能启动 Docker 服务，不能删除容器。(B)
+A对
+B错
+
+Jinja2 中 {{ value | upper }} 会将字符串转为大写。(A)
+A对
+B错
+
+ansible-playbook -k site.yml 会要求用户输入SSH密码。(A)
+A对
+B错
+
+输出重定向command &gt; file会覆盖文件file的原有内容，若文件不存在则创建该文件。(A)
+A对
+B错
+
+环境变量PATH中，目录之间使用分号;分隔，用于指定系统搜索可执行文件的路径。(B)
+A对
+B错
+
+Ansible Ad Hoc命令无法批量执行，必须通过Playbook实现批量操作。(B)
+A对
+B错
+
+ansible-galaxy install nginx命令可安装nginx角色。(A)
+A对
+B错
+
+Shell中的逻辑或运算符是&amp;&amp;，逻辑与运算符是||。(B)
+A对
+B错
+
+register 变量可以用于下一步条件判断。(A)
+A对
+B错
+
+cp file1 file2 会覆盖 file2，不会提示确认。(A)
+A对
+B错
+
+ansible db -m command -a "uptime" 会在 db 主机组执行命令。(A)
+A对
+B错
+
+在Shell脚本中，$?变量用于表示上一条命令的执行结果，0表示执行成功，非0表示执行失败。(A)
+A对
+B错
+
+read var 会等待用户输入并存入 var。(A)
+A对
+B错
+
+echo 命令默认输出内容后会换行，但 echo -n 会取消换行。(A)
+A对
+B错
+
+ansible-playbook --tags install 只执行带 install 标签的任务。(A)
+A对
+B错
+
+在Shell中，ls -a 会显示所有文件，包括隐藏文件。(A)
+A对
+B错
+
+tasks 中的任务按顺序执行。(A)
+A对
+B错
+
+Shell 函数必须使用 function 关键字，否则不能执行。(B)
+A对
+B错
+
+awk 默认以空格和制表符作为分隔符。(A)
+A对
+B错
+
+setup 模块通过 filter 仅获取特定 facts。(A)
+A对
+B错
+
+service 模块只能启动服务，不能停止服务。(B)
+A对
+B错
+
+sed 's/abc/123/g' 会替换整行所有 abc。(A)
+A对
+B错
+
+Playbook 中的 name 字段只是注释，不显示在输出日志中。(B)
+A对
+B错
+
+awk 'END{print NR}' 打印行数，但若文件为空则输出 0。(A)
+A对
+B错
+
+cat file1 file2 &gt; output.txt 会将两个文件内容覆盖写入 output.txt。(A)
+A对
+B错
+
+vars_files: vars.yml 从文件加载变量。(A)
+A对
+B错
+
+become: yes用于切换到root执行任务，无需become_user。(B)
+A对
+B错
+
+ansible.cfg 修改后无需重启服务即可立即生效。(A)
+A对
+B错
+
+sort file.txt 默认按数字排序。(B)
+A对
+B错
+
+Ansible配置文件优先级:当前目录 &gt; 用户目录 &gt; 系统目录。(A)
+A对
+B错
+
+handlers会立即执行。(B)
+A对
+B错
+
+使用 Ansible 管理受管主机时，必须配置密钥认证，不能使用密码。(B)
+A对
+B错
+
+service 模块可启动、停止、重启服务。(A)
+A对
+B错
+
+在 inventory 文件中写主机 IP 就可以让 Ansible 识别该主机。(A)
+A对
+B错
+
+echo $(pwd) 会打印当前目录路径与 echo `pwd` 的效果完全相同。(A)
+A对
+B错
+
+ansible-doc 命令可以查看模块的详细用法及示例。(A)
+A对
+B错
+
+authorized_key 模块用于在目标主机上配置 SSH 公钥。(A)
+A对
+B错
+
+default(值) 过滤器可以为未定义变量提供默认值。(A)
+A对
+B错
+
+Jinja2 if 判断语法必须用 endif 结束。(A)
+A对
+B错
+
+expr 2 + 3 能正确计算出 5，并且加号两端不能有空格。(B)
+A对
+B错
+
+pwd 显示当前目录的绝对路径。(A)
+A对
+B错
+
+Playbook 必须使用 .yml 后缀，不能用 .yaml。(B)
+A对
+B错
+
+hosts: "*" 表示任务会在全部主机上执行。(A)
+A对
+B错
+
+if [ 3 -lt 2 ] 输出 yes。(B)
+A对
+B错
+
+sed -i '3d' file.txt 会删除文件第三行并修改文件。(A)
+A对
+B错
+
+--skip-tags 跳过指定标签任务。(A)
+A对
+B错
+
+file 模块可以创建目录、文件以及符号链接。(A)
+A对
+B错
+
+test -d dirname 用于判断某路径是否为普通文件。(B)
+A对
+B错
+
+Jinja2 中 for 循环语法必须以 endfor 结束。(A)
+A对
+B错
+
+# 开头的行都是注释，包括 #!/bin/bash。(B)
+A对
+B错
+
+facts 会自动收集操作系统版本、IP、内存等。(A)
+A对
+B错
+
+Ansible 受管主机必须安装 ansible 才能被管理。(B)
+A对
+B错
+
+ansible-playbook --check site.yml为模拟执行，不修改受管主机。(A)
+A对
+B错
+
+ansible web -m command -a "ls" 会在 web 组机器上执行 ls 命令。(A)
+A对
+B错
+
+grep -i "Linux" file.txt命令会忽略大小写，查找包含各种大小写形式Linux的行。(A)
+A对
+B错
+
+cd testdir 进入不存在的目录时 Shell 会自动创建该目录。(B)
+A对
+B错
+
+ansible-playbook --check 会显示将要执行的变更但不修改系统。(A)
+A对
+B错
+
+使用 &gt; 会清空文件内容，而使用 &gt;&gt; 会在文件末尾追加内容。(A)
+A对
+B错
+
+template 模块可以渲染 Jinja2 模板。(A)
+A对
+B错
+
+firewalld port: 443/tcp 可开放端口。(A)
+A对
+B错
+
+vars 字段可用于在 Playbook 中定义变量。(A)
+A对
+B错
+
+handlers 是立即执行的任务，不需要被触发。(B)
+A对
+B错
+
+grep test /home 会递归搜索所有文件并输出结果。(B)
+A对
+B错
+
+Ansible默认通过SSH协议与受管主机通信，无需在受管主机上安装代理程序。(A)
+A对
+B错
+
+Shell函数中，return命令用于返回函数执行结果，exit命令用于退出整个脚本而非仅退出函数。(A)
+A对
+B错
+
+sed '1,3d' file.txt 会删除 file.txt 的第1到第3行并修改原文件。(B)
+A对
+B错
+
+grep -i 会忽略大小写;grep -v 会输出不匹配的行。(A)
+A对
+B错
+
+ansible all -m ping 可以验证 SSH 连接是否正常。(A)
+A对
+B错
+
+ansible-galaxy 用于管理 inventory 文件。(B)
+A对
+B错
+
+ansible-doc copy 可以查看 copy 模块的用法和示例。(A)
+A对
+B错
+
+awk 获取列值使用语法 :  ${数字}
+
+创建目录使用命令 :  mkdir
+
+让函数返回值使用关键字 :  return
+
+Playbook 定义变量使用关键字 :  vars
+
+后台运行任务查看列表使用命令 :  jobs
+
+将标准输出追加到文件使用 :  &gt;&gt;
+
+Shell 中获取当前 Shell 进程 PID 的变量是 :  $$
+
+修改文件权限使用命令 :  chmod
+
+查看系统负载使用命令 :  uptime
+
+Jinja2 for 循环开始标签是 :  {% for 变量 in 列表 %}
+
+awk 打印所有行使用 :  {print $0}
+
+清屏命令为 :  clear
+
+同时重定向标准输出与错误使用 :  &amp;&gt;
+
+在 Shell 中暂停 5 秒使用命令 :  sleep 5
+
+获取上一条命令返回状态码应使用 :  $?
+
+sed 删除某行使用命令格式 :  sed 'Nd' file.txt
+
+Ansible 默认主机清单文件路径为 :  /etc/ansible/hosts
+
+执行带管道命令应使用模块 :  shell
+
+判断文件是否存在使用测试表达式 :  -f 文件名
+
+查找文本匹配使用命令 :  grep
+
+强制删除文件使用参数 :  rm -f
+
+查看所有进程使用命令 :  ps -ef
+
+判断两个数字不等使用 :  -ne
+
+执行 df -h 应使用模块 :  command
+
+判断文件是否可执行使用表达式 :  -x 文件名
+
+忽略任务错误继续执行使用 :  ignore_errors: yes
+
+查找命令所在路径使用命令 :  which
+
+获取主机名的事实变量为 :  ansible_hostname
+
+仅退出 vim 不保存使用命令 :  :q!
+
+匹配以某字符串开头的 grep 选项为 :  ^
+
+给变量设置默认值使用过滤器 :  default
+
+查看当前登录用户使用命令 :  who
+
+判断字符串是否为空使用 :  [ -z "$str" ]
+
+查看当前用户所属用户组使用命令 :  groups
+
+复制文件使用命令 :  cp
+
+查看内存使用情况使用 :  free
+
+修改文件所有者使用命令 :  chown
+
+切换到 root 用户使用命令 :  su -
+
+命令输出赋值给变量的语法为 :  变量=$(command)
+
+匹配以某字符串结尾使用正则 :  $
+
+递归查找文本使用 grep 选项 :  -r
+
+查看路径中执行命令搜索顺序使用命令 :  echo $PATH
+
+显示行号使用 grep 参数 :  -n
+
+将标准输出重定向到文件使用 :  &gt;
+
+将后台任务恢复前台使用命令 :  fg
+
+遇到错误立即退出脚本使用 :  set -e
+
+退出当前 Shell 使用命令 :  exit
+
+显示当前工作目录使用命令 :  pwd
+
+解压 zip 文件使用命令 :  unzip
+
+退出 vim 的保存退出命令是 :  :wq
+
+sed 替换文本使用命令格式 :  sed 's/旧字符串/新字符串/选项' file.txt
+
+创建用户使用模块 :  user
+
+获取 Jinja2 中变量长度使用过滤器 :  length
+
+显示当前时间(时:分:秒)使用命令 :  date +"%H:%M:%S"
+
+查看网络接口信息使用命令 :  ip addr
+
+统计匹配行数的命令为 :  grep -c "pattern" file.txt
+
+递归删除目录使用命令参数 :  rm -r
+
+查看当前环境变量使用 :  env
+
+将任务挂起到后台使用命令 :  Ctrl+Z 挂起后 bg
+
+显示所有开放端口使用命令 :  ss -tuln
+
+压缩目录为 zip 文件使用命令 :  zip -r dir.zip 目录名
+
+Ansible 通用安装软件的模块为 :  package
+
+复制模板文件使用模块 :  template
+
+判断字符串是否非空使用 :  [ -n "$str" ]
+
+移动文件或重命名文件使用命令 :  mv
+
+打印调试信息使用模块 :  debug
+
+跳过本轮循环使用关键字 :  continue
+
+终止进程使用命令 :  kill
+
+创建空文件使用命令 :  touch
+
+编辑文本文件最常用编辑器是 :  vim
+
+在 Ansible 中创建目录应使用模块 :  file
+
+Shell 中获取当前脚本文件名的变量是 :  $0
+
+Jinja2 模板引用变量的格式为 :  {{ 变量名 }}
+
+查看进程树使用命令 :  pstree
+
+判断整数小于等于某值使用 :  -le
+
+终止循环使用关键字 :  break
+
+awk 获取当前行号使用变量 :  NR
+
+for 循环基本语法为 :  for 变量 in 列表; do 命令; done
+
+查看当前用户使用命令 :  whoami
+
+判断是否为普通文件使用测试表达式 :  -f 文件名
+
+在 bash 中执行算术表达式结构为 :  $((表达式))
+
+强制终止进程使用参数 :  kill -9
+
+显示系统当前日期使用命令 :  date
+
+查找文件路径使用命令 :  find
+
+查看历史命令使用命令 :  history
+
+将标准错误输出重定向使用 :  2&gt;
+
+让程序后台运行并忽略挂断信号使用 :  nohup 命令 &amp;
+
+解压 tar.gz 文件使用 tar 参数 :  tar -zxf
+
+查看监听端口使用命令(传统命令) :  netstat -tulnp
+
+控制服务状态使用模块 :  service
+
+删除文件使用命令 :  rm
+
+判断整数大于等于某值使用 :  -ge
+
+查看系统版本信息使用命令 :  cat /etc/os-release
+
+awk 设置字段分隔符参数为 :  -F
+
+判断是否为目录使用测试表达式 :  -d 目录名
+
+查看命令手册使用命令 :  man
+
+查看磁盘使用情况使用 :  df
+
+打包并压缩文件使用 tar 参数 :  tar -zcf
+
+显示文件最后 20 行内容使用 :  tail -20 file.txt
+
+声明一个函数使用关键字 :  function
+</code></pre><p>Ansible 开放 80 端口并启动 firewalld</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> firewalld
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> firewalld
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+
+    <span class="token punctuation">-</span> <span class="token key atrule">firewalld</span><span class="token punctuation">:</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> 80/tcp
+        <span class="token key atrule">permanent</span><span class="token punctuation">:</span> yes
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> enabled
+        <span class="token key atrule">immediate</span><span class="token punctuation">:</span> yes
+</code></pre><p>给文件每行加行号与时间戳</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">awk</span> <span class="token string">'{print NR, strftime("%F %T"), $0}'</span> file.txt
+</code></pre><p>备份指定目录到另一个目录并压缩为 timestamp.tar.gz</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">tar</span> <span class="token parameter variable">-czf</span> /backup/dir/<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%F_%H%M%S<span class="token variable">)</span></span>.tar.gz /source/dir
+</code></pre><p>判断目录是否存在并统计文件数量</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入目录: "</span> <span class="token function">dir</span>
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$dir</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"完整路径: <span class="token variable"><span class="token variable">$(</span>realpath $dir<span class="token variable">)</span></span>"</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">".sh 文件数量: <span class="token variable"><span class="token variable">$(</span><span class="token function">find</span> $dir <span class="token parameter variable">-name</span> <span class="token string">'*.sh'</span> <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span><span class="token variable">)</span></span>"</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"普通文件数量: <span class="token variable"><span class="token variable">$(</span><span class="token function">find</span> $dir <span class="token parameter variable">-type</span> f <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span><span class="token variable">)</span></span>"</span>
+<span class="token keyword keyword-else">else</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"目录不存在"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>检查 iowait 并输出警告</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token assign-left variable">iowait</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>iostat <span class="token parameter variable">-c</span> <span class="token number">1</span> <span class="token number">1</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'NR==4{print $4}'</span><span class="token variable">)</span></span>
+<span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${iowait<span class="token operator">%</span>.*}</span>"</span> <span class="token parameter variable">-gt</span> <span class="token number">20</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">" IOWAIT 过高: <span class="token variable">$iowait</span>%"</span>
+</code></pre><p>检查用户是否存在并输出 home 目录</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">id</span> testuser <span class="token operator">&amp;&gt;</span>/dev/null <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">eval</span> <span class="token builtin class-name">echo</span> <span class="token string">"~testuser"</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"用户不存在"</span>
+</code></pre><p>使用 Ansible 创建 /data/app 目录并指定权限</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">file</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /data/app
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> directory
+        <span class="token key atrule">owner</span><span class="token punctuation">:</span> root
+        <span class="token key atrule">group</span><span class="token punctuation">:</span> root
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token string">'0755'</span>
+</code></pre><p>Ansible 输出系统信息</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">debug</span><span class="token punctuation">:</span>
+        <span class="token key atrule">msg</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> <span class="token string">"系统: {{ ansible_distribution }}"</span>
+          <span class="token punctuation">-</span> <span class="token string">"IP 地址: {{ ansible_default_ipv4.address }}"</span>
+          <span class="token punctuation">-</span> <span class="token string">"CPU 核心数: {{ ansible_processor_vcpus }}"</span>
+          <span class="token punctuation">-</span> <span class="token string">"内存大小: {{ ansible_memtotal_mb }} MB"</span>
+</code></pre><p>Ansible 禁止 root 登录 SSH</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">lineinfile</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /etc/ssh/sshd_config
+        <span class="token key atrule">regexp</span><span class="token punctuation">:</span> <span class="token string">'^PermitRootLogin'</span>
+        <span class="token key atrule">line</span><span class="token punctuation">:</span> <span class="token string">'PermitRootLogin no'</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> sshd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> restarted
+</code></pre><p>批量重命名 txt 文件为 *____backup.txt</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token keyword keyword-for">for</span> <span class="token for-or-select variable">f</span> <span class="token keyword keyword-in">in</span> *.txt<span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+  <span class="token function">mv</span> <span class="token string">"<span class="token variable">$f</span>"</span> <span class="token string">"<span class="token variable">${f<span class="token operator">%</span>.txt}</span>____backup.txt"</span>
+<span class="token keyword keyword-done">done</span>
+</code></pre><p>随机生成 10 位密码并保存</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">tr</span> <span class="token parameter variable">-dc</span> A-Za-z0-9 <span class="token operator">&lt;</span>/dev/urandom <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-c10</span> <span class="token operator">&gt;</span> password.txt
+</code></pre><p>Ansible 批量安装软件包</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> vim
+          <span class="token punctuation">-</span> wget
+          <span class="token punctuation">-</span> curl
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+</code></pre><p>判断当前用户是否 root</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token punctuation">[</span> <span class="token string">"<span class="token environment constant">$EUID</span>"</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"当前用户是 root"</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"当前用户不是 root"</span>
+</code></pre><p>循环菜单程序</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token keyword keyword-while">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"1) 查询时间 2) 查询位置 3) 登录人数 q) 退出"</span>
+  <span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请选择: "</span> c
+  <span class="token keyword keyword-case">case</span> <span class="token variable">$c</span> <span class="token keyword keyword-in">in</span>
+    <span class="token number">1</span><span class="token punctuation">)</span> <span class="token function">date</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token number">2</span><span class="token punctuation">)</span> <span class="token builtin class-name">pwd</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token number">3</span><span class="token punctuation">)</span> <span class="token function">who</span> <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    q<span class="token punctuation">)</span> <span class="token builtin class-name">exit</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-esac">esac</span>
+<span class="token keyword keyword-done">done</span>
+</code></pre><p>Shell 脚本检测 ping 是否成功</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">ping</span> <span class="token parameter variable">-c2</span> <span class="token number">8.8</span>.8.8 <span class="token operator">&amp;&gt;</span>/dev/null <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"Ping 成功"</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Ping 失败"</span>
+</code></pre><p>Ansible 执行 df -h 并输出行列表</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">command</span><span class="token punctuation">:</span> df <span class="token punctuation">-</span>h
+      <span class="token key atrule">register</span><span class="token punctuation">:</span> df_out
+
+    <span class="token punctuation">-</span> <span class="token key atrule">debug</span><span class="token punctuation">:</span>
+        <span class="token key atrule">var</span><span class="token punctuation">:</span> df_out.stdout_lines
+</code></pre><p>输出 CPU、内存使用率和 15 分钟负载</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">echo</span> <span class="token string">"CPU 使用率: <span class="token variable"><span class="token variable">$(</span><span class="token function">top</span> <span class="token parameter variable">-bn1</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/Cpu/{print 100-$8"%"}'</span><span class="token variable">)</span></span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"内存使用率: <span class="token variable"><span class="token variable">$(</span><span class="token function">free</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/Mem/{printf "%.2f%%\n",$3/$2*100}'</span><span class="token variable">)</span></span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"15 分钟负载: <span class="token variable"><span class="token variable">$(</span><span class="token function">uptime</span> <span class="token operator">|</span> <span class="token function">awk</span> -F<span class="token string">'load average:'</span> <span class="token string">'{print $2}'</span> <span class="token operator">|</span> <span class="token function">cut</span> -d, <span class="token parameter variable">-f3</span><span class="token variable">)</span></span>"</span>
+</code></pre><p>检测进程是否运行并输出 PID 与数量</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token assign-left variable">pids</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>pgrep sshd<span class="token variable">)</span></span>
+<span class="token builtin class-name">echo</span> <span class="token string">"PID 列表: <span class="token variable">$pids</span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"进程数量: <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$pids</span>"</span> <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-w</span><span class="token variable">)</span></span>"</span>
+</code></pre><p>使用 Ansible 安装并启动 httpd 服务</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> httpd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> httpd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+</code></pre><p>Ansible 批量创建 dev 用户</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">users</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> dev1
+      <span class="token punctuation">-</span> dev2
+      <span class="token punctuation">-</span> dev3
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">user</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"{{ item }}"</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+      <span class="token key atrule">loop</span><span class="token punctuation">:</span> <span class="token string">"{{ users }}"</span>
+</code></pre><p>清理 /tmp 下 7 天前文件并记录日志</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">find</span> /tmp <span class="token parameter variable">-type</span> f <span class="token parameter variable">-mtime</span> +7 <span class="token parameter variable">-exec</span> <span class="token function">rm</span> <span class="token parameter variable">-v</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span> <span class="token operator">&gt;&gt;</span> /var/log/tmp_clean.log
+</code></pre><p>Ansible 复制文件并备份旧版本</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">copy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">src</span><span class="token punctuation">:</span> test.conf
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/test.conf
+        <span class="token key atrule">backup</span><span class="token punctuation">:</span> yes
+</code></pre><p>Ansible 安装并启动 firewalld 并输出状态</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> firewalld
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> firewalld
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+
+    <span class="token punctuation">-</span> <span class="token key atrule">command</span><span class="token punctuation">:</span> firewall<span class="token punctuation">-</span>cmd <span class="token punctuation">-</span><span class="token punctuation">-</span>state
+      <span class="token key atrule">register</span><span class="token punctuation">:</span> fw_state
+
+    <span class="token punctuation">-</span> <span class="token key atrule">debug</span><span class="token punctuation">:</span>
+        <span class="token key atrule">msg</span><span class="token punctuation">:</span> <span class="token string">"firewalld 状态: {{ fw_state.stdout }}"</span>
+</code></pre><p>不断输入数字并累加，输入 q 退出</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token assign-left variable">sum</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword keyword-while">while</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"输入数字(q 退出): "</span> n<span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+  <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$n</span>"</span> <span class="token operator">=</span> <span class="token string">"q"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">break</span>
+  <span class="token assign-left variable">sum</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>sum<span class="token operator">+</span>n<span class="token variable">))</span></span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"当前累计值: <span class="token variable">$sum</span>"</span>
+<span class="token keyword keyword-done">done</span>
+</code></pre><p>Ansible 创建多个目录结构</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">file</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> <span class="token string">"{{ item }}"</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> directory
+      <span class="token key atrule">loop</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> /data/app/logs
+        <span class="token punctuation">-</span> /data/app/bin
+        <span class="token punctuation">-</span> /data/app/conf
+</code></pre><p>统计文件每行字符数（不包含回车）</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">awk</span> <span class="token string">'{print length($0)}'</span> file.txt
+</code></pre><p>Ansible 创建用户 devuser 并指定加密密码</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">user</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> devuser
+        <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">"{{ '123456' | password_hash('sha512') }}"</span>
+</code></pre><p>生成 5 条日志，每条间隔 3 秒</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token keyword keyword-for">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword keyword-in">in</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span><span class="token variable">)</span></span> log <span class="token variable">$i</span>"</span> <span class="token operator">&gt;&gt;</span> test.log
+  <span class="token function">sleep</span> <span class="token number">3</span>
+<span class="token keyword keyword-done">done</span>
+</code></pre><p>Ansible 获取 lsblk 输出</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">command</span><span class="token punctuation">:</span> lsblk
+      <span class="token key atrule">register</span><span class="token punctuation">:</span> lsblk_out
+
+    <span class="token punctuation">-</span> <span class="token key atrule">debug</span><span class="token punctuation">:</span>
+        <span class="token key atrule">var</span><span class="token punctuation">:</span> lsblk_out.stdout_lines
+</code></pre><p>检查 / 分区使用率，超过 80% 输出警告</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token assign-left variable">use</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">df</span> / <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'NR==2{print $5}'</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-d</span> <span class="token string">'%'</span><span class="token variable">)</span></span>
+<span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$use</span>"</span> <span class="token parameter variable">-gt</span> <span class="token number">80</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"分区使用率过高: <span class="token variable">$use</span>%"</span>
+</code></pre><p>磁盘空间使用率检测</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 检查磁盘空间使用率</span>
+<span class="token assign-left variable">threshold</span><span class="token operator">=</span><span class="token number">80</span>
+
+<span class="token function">df</span> <span class="token parameter variable">-h</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> Filesystem <span class="token operator">|</span> <span class="token keyword keyword-while">while</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> line<span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+    <span class="token assign-left variable">mount_point</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $6}'</span><span class="token variable">)</span></span>
+    <span class="token assign-left variable">usage</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $5}'</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/%//'</span><span class="token variable">)</span></span>
+
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token variable">$usage</span> <span class="token parameter variable">-gt</span> <span class="token variable">$threshold</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"警告：<span class="token variable">$mount_point</span> 分区使用率过高：<span class="token variable">${usage}</span>%"</span>
+    <span class="token keyword keyword-else">else</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$mount_point</span> 分区使用率正常：<span class="token variable">${usage}</span>%"</span>
+    <span class="token keyword keyword-fi">fi</span>
+<span class="token keyword keyword-done">done</span>
+</code></pre><p>第1空：threshold<br>
+第2空：usage</p>
+<p>统计日志错误和警告</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 统计日志文件中的错误数量</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入日志文件路径："</span> log_file
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$log_file</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token assign-left variable">error_count</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">grep</span> <span class="token parameter variable">-c</span> <span class="token string">"ERROR"</span> <span class="token string">"<span class="token variable">$log_file</span>"</span><span class="token variable">)</span></span>
+    <span class="token assign-left variable">warn_count</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">grep</span> <span class="token parameter variable">-c</span> <span class="token string">"WARN"</span> <span class="token string">"<span class="token variable">$log_file</span>"</span><span class="token variable">)</span></span>
+
+    <span class="token builtin class-name">echo</span> <span class="token string">"日志文件 <span class="token variable">$log_file</span> 统计："</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"ERROR 数量：<span class="token variable">$error_count</span>"</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"WARN 数量：<span class="token variable">$warn_count</span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"日志文件不存在"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：WARN<br>
+第2空：warn_count</p>
+<p>监控 CPU 使用率</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 监控CPU使用率</span>
+<span class="token assign-left variable">cpu_usage</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">top</span> <span class="token parameter variable">-bn1</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"Cpu(s)"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $2 + $4}'</span><span class="token variable">)</span></span>
+<span class="token assign-left variable">cpu_int</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$cpu_usage</span>"</span> <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">--f1</span><span class="token variable">)</span></span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token variable">$cpu_int</span> <span class="token parameter variable">-gt</span> <span class="token number">80</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span><span class="token variable">)</span></span> CPU使用率过高：<span class="token variable">${cpu_usage}</span>%"</span> <span class="token operator">&gt;&gt;</span> /var/log/cpu_alert.log
+    <span class="token builtin class-name">echo</span> <span class="token string">"警告：CPU使用率过高！"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"CPU使用率正常：<span class="token variable">${cpu_usage}</span>%"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：80<br>
+第2空：cpu_usage</p>
+<p>自动清理旧日志</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 自动清理旧日志</span>
+<span class="token assign-left variable">log_dir</span><span class="token operator">=</span><span class="token string">"/var/log/myapp"</span>
+<span class="token assign-left variable">days</span><span class="token operator">=</span><span class="token number">30</span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$log_dir</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"清理 <span class="token variable">$log_dir</span> 中超过 <span class="token variable">$days</span> 天的日志文件..."</span>
+    <span class="token function">find</span> <span class="token string">"<span class="token variable">$log_dir</span>"</span> <span class="token parameter variable">-name</span> <span class="token string">"*.log"</span> <span class="token parameter variable">-type</span> f <span class="token parameter variable">-mtime</span> +<span class="token variable">$days</span> <span class="token parameter variable">-delete</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"清理完成，剩余日志文件："</span>
+    <span class="token function">find</span> <span class="token string">"<span class="token variable">$log_dir</span>"</span> <span class="token parameter variable">-name</span> <span class="token string">"*.log"</span> <span class="token parameter variable">-type</span> f <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"日志目录不存在"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：days<br>
+第2空：wc -l</p>
+<p>Ansible 配置 Java 环境</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置Java环境
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> app_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">java_version</span><span class="token punctuation">:</span> <span class="token string">"11"</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装OpenJDK
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"java-{{ java_version }}-openjdk-devel"</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 设置JAVA_HOME环境变量
+      <span class="token key atrule">lineinfile</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /etc/profile
+        <span class="token key atrule">line</span><span class="token punctuation">:</span> <span class="token string">'export JAVA_HOME=/usr/lib/jvm/java-{{ java_version }}-openjdk'</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+</code></pre><p>第1空：present<br>
+第2空：present</p>
+<p>Ansible 部署 Web 服务</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 部署Web服务
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> web_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Apache
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> httpd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 复制首页文件
+      <span class="token key atrule">copy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">src</span><span class="token punctuation">:</span> ./index.html
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /var/www/html/
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token number">0644</span>
+      <span class="token key atrule">notify</span><span class="token punctuation">:</span> 重启Apache
+
+  <span class="token key atrule">handlers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 重启Apache
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> httpd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> restarted
+</code></pre><p>第1空：present<br>
+第2空：重启Apache</p>
+<p>Ansible 配置 Zabbix 客户端</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置Zabbix客户端
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">zabbix_server</span><span class="token punctuation">:</span> <span class="token string">"192.168.1.50"</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Zabbix客户端
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> zabbix<span class="token punctuation">-</span>agent
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置Zabbix客户端
+      <span class="token key atrule">lineinfile</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /etc/zabbix/zabbix_agentd.conf
+        <span class="token key atrule">regexp</span><span class="token punctuation">:</span> <span class="token string">'^Server='</span>
+        <span class="token key atrule">line</span><span class="token punctuation">:</span> <span class="token string">"Server={{ zabbix_server }}"</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动Zabbix客户端
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> zabbix<span class="token punctuation">-</span>agent
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+</code></pre><p>第1空：present<br>
+第2空：yes</p>
+<p>Ansible 部署 Node.js 应用</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 部署Node.js应用
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> app_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Node.js和npm
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> nodejs
+          <span class="token punctuation">-</span> npm
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装PM2进程管理器
+      <span class="token key atrule">npm</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> pm2
+        <span class="token key atrule">global</span><span class="token punctuation">:</span> yes
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动Node.js应用
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> pm2 start /opt/app/server.js
+</code></pre><p>第1空：present<br>
+第2空：present</p>
+<p>配置 MySQL 用户和数据库</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置MySQL用户和数据库
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> db_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">db_name</span><span class="token punctuation">:</span> <span class="token string">"appdb"</span>
+    <span class="token key atrule">db_user</span><span class="token punctuation">:</span> <span class="token string">"appuser"</span>
+    <span class="token key atrule">db_pass</span><span class="token punctuation">:</span> <span class="token string">"password123"</span>
+
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 创建数据库
+      <span class="token key atrule">mysql_db</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"{{ db_name }}"</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 创建数据库用户并授权
+      <span class="token key atrule">mysql_user</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"{{ db_user }}"</span>
+        <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">"{{ db_pass }}"</span>
+        <span class="token key atrule">priv</span><span class="token punctuation">:</span> <span class="token string">"{{ db_name }}.*:ALL"</span>
+        <span class="token key atrule">host</span><span class="token punctuation">:</span> <span class="token string">"%"</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+</code></pre><p>第1空：password123<br>
+第2空：%</p>
+<p>配置防火墙允许特定 IP 访问</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置防火墙允许特定IP访问
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> db_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 允许Web服务器IP访问3306端口
+      <span class="token key atrule">firewalld</span><span class="token punctuation">:</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> 3306/tcp
+        <span class="token key atrule">source</span><span class="token punctuation">:</span> 192.168.1.0/24
+        <span class="token key atrule">permanent</span><span class="token punctuation">:</span> yes
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> enabled
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 重新加载防火墙规则
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> firewalld
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> reloaded
+</code></pre><p>第1空：192.168.1.0/24<br>
+第2空：enabled</p>
+<p>配置 YUM 源</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置YUM源
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装EPEL源
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> epel<span class="token punctuation">-</span>release
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 清理YUM缓存
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> yum clean all
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 生成新的YUM缓存
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> yum makecache all
+
+</code></pre><p>第1空：present<br>
+第2空：makecache</p>
+<p>批量压缩文件</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 批量压缩文件</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入要压缩的文件类型（如txt）："</span> file_type
+<span class="token assign-left variable">files</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ls</span> *.$file_type <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>/dev/null<span class="token variable">)</span></span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$files</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token function">tar</span> <span class="token parameter variable">-czf</span> <span class="token string">"<span class="token variable">${file_type}</span>_files_<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y%m%d<span class="token variable">)</span></span>.tar.gz"</span> *.<span class="token variable">$file_type</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"已压缩以下文件："</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$files</span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"没有找到 .<span class="token variable">$file_type</span> 类型的文件"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：file_type<br>
+第2空：files</p>
+<p>监控网络流量</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 监控网络流量</span>
+<span class="token assign-left variable">interface</span><span class="token operator">=</span><span class="token string">"eth0"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"监控 <span class="token variable">$interface</span> 网络流量（按Ctrl+C退出）"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"----------------------------------------"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"接收字节 发送字节 接收速率 发送速率"</span>
+
+<span class="token keyword keyword-while">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+    <span class="token assign-left variable">rx1</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /sys/class/net/<span class="token string">"<span class="token variable">$interface</span>"</span>/statistics/rx_bytes<span class="token variable">)</span></span>
+    <span class="token assign-left variable">tx1</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /sys/class/net/<span class="token string">"<span class="token variable">$interface</span>"</span>/statistics/tx_bytes<span class="token variable">)</span></span>
+
+    <span class="token function">sleep</span> <span class="token number">1</span>
+
+    <span class="token assign-left variable">rx2</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /sys/class/net/<span class="token string">"<span class="token variable">$interface</span>"</span>/statistics/rx_bytes<span class="token variable">)</span></span>
+    <span class="token assign-left variable">tx2</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /sys/class/net/<span class="token string">"<span class="token variable">$interface</span>"</span>/statistics/tx_bytes<span class="token variable">)</span></span>
+
+    <span class="token assign-left variable">rx_rate</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span> <span class="token punctuation">(</span>rx2 <span class="token operator">-</span> rx1<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1024</span> <span class="token variable">))</span></span>
+    <span class="token assign-left variable">tx_rate</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span> <span class="token punctuation">(</span>tx2 <span class="token operator">-</span> tx1<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1024</span> <span class="token variable">))</span></span>
+
+    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$rx2</span> <span class="token variable">$tx2</span> <span class="token variable">${rx_rate}</span>KB/s <span class="token variable">${tx_rate}</span>KB/s"</span>
+<span class="token keyword keyword-done">done</span>
+</code></pre><p>第1空：1<br>
+第2空：1024</p>
+<p>监控系统负载</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 监控系统负载</span>
+<span class="token assign-left variable">load</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">uptime</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token parameter variable">-F</span> <span class="token string">'load average:'</span> <span class="token string">'{print $2}'</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
+<span class="token assign-left variable">load_int</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$load</span>"</span> <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">--f1</span><span class="token variable">)</span></span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token variable">$load_int</span> <span class="token parameter variable">-gt</span> <span class="token number">5</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span><span class="token variable">)</span></span> 系统负载过高：<span class="token variable">$load</span>"</span> <span class="token operator">&gt;&gt;</span> /var/log/load_alert.log
+    <span class="token builtin class-name">echo</span> <span class="token string">"警告：系统负载过高！"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"系统负载正常：<span class="token variable">$load</span>"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：5<br>
+第2空：load</p>
+<p>检查网络连通性</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 检查网络连通性</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入目标IP地址："</span> ip_addr
+<span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token assign-left variable">success</span><span class="token operator">=</span><span class="token number">0</span>
+
+<span class="token keyword keyword-while">while</span> <span class="token punctuation">[</span> <span class="token variable">$count</span> <span class="token parameter variable">-lt</span> <span class="token number">5</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+    <span class="token function">ping</span> <span class="token parameter variable">-c</span> <span class="token number">1</span> <span class="token parameter variable">-W</span> <span class="token number">2</span> <span class="token string">"<span class="token variable">$ip_addr</span>"</span> <span class="token operator">&gt;</span> /dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+        <span class="token assign-left variable">success</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>success <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+    <span class="token keyword keyword-fi">fi</span>
+    <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+<span class="token keyword keyword-done">done</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"共测试<span class="token variable">$count</span>次，成功<span class="token variable">$success</span>次，成功率：<span class="token variable"><span class="token variable">$((</span>success <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">/</span> count<span class="token variable">))</span></span>%"</span>
+</code></pre><p>第1空：5<br>
+第2空：1</p>
+<p>部署 Kubernetes 节点</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 部署Kubernetes节点
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> k8s_nodes
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">k8s_version</span><span class="token punctuation">:</span> <span class="token string">"1.21.0"</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装kubeadm、kubelet和kubectl
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> kubeadm<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> k8s_version <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token punctuation">-</span> kubelet<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> k8s_version <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token punctuation">-</span> kubectl<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> k8s_version <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动kubelet服务
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> kubelet
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+</code></pre><p>第1空：present<br>
+第2空：yes</p>
+<p>管理 SELinux</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 管理SELinux
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 查看SELinux状态
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> getenforce
+      <span class="token key atrule">register</span><span class="token punctuation">:</span> selinux_status
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 输出SELinux状态
+      <span class="token key atrule">debug</span><span class="token punctuation">:</span>
+        <span class="token key atrule">msg</span><span class="token punctuation">:</span> <span class="token string">"当前SELinux状态：{{ selinux_status.stdout }}"</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 禁用SELinux（临时）
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> setenforce 0
+      <span class="token key atrule">when</span><span class="token punctuation">:</span> selinux_status.stdout == "Enforcing"
+
+</code></pre><p>第1空：selinux_status<br>
+第2空：Enforcing</p>
+<p>配置防火墙规则</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置防火墙规则
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 开放80和443端口
+      <span class="token key atrule">firewalld</span><span class="token punctuation">:</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token string">"{{ item }}"</span>
+        <span class="token key atrule">permanent</span><span class="token punctuation">:</span> yes
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> enabled
+      <span class="token key atrule">loop</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> 80/tcp
+        <span class="token punctuation">-</span> 443/tcp
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 重新加载防火墙
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> firewalld
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> reloaded
+</code></pre><p>第1空：enabled<br>
+第2空：443/tcp</p>
+<p>配置邮件告警</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置邮件告警
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> monitor_server
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">alert_email</span><span class="token punctuation">:</span> <span class="token string">"admin@example.com"</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装邮件客户端
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> mailx
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置邮件发送脚本
+      <span class="token key atrule">template</span><span class="token punctuation">:</span>
+        <span class="token key atrule">src</span><span class="token punctuation">:</span> send_alert.sh.j2
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /usr/local/bin/send_alert.sh
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token number">0755</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 添加定时任务检查系统状态
+      <span class="token key atrule">cron</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"系统状态检查"</span>
+        <span class="token key atrule">minute</span><span class="token punctuation">:</span> <span class="token string">"*/30"</span>
+        <span class="token key atrule">job</span><span class="token punctuation">:</span> <span class="token string">"/usr/local/bin/check_system.sh"</span>
+</code></pre><p>第1空：present<br>
+第2空：0755</p>
+<p>分析系统启动时间</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 分析系统启动时间</span>
+<span class="token assign-left variable">boot_time</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>systemd-analyze <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"Startup finished"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $3 " " $4}'</span><span class="token variable">)</span></span>
+<span class="token builtin class-name">echo</span> <span class="token string">"系统启动时间：<span class="token variable">$boot_time</span>"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"启动过程中耗时最长的5个服务："</span>
+systemd-analyze blame <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-n</span> <span class="token number">5</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"关键路径上的服务："</span>
+systemd-analyze critical-chain <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-n</span> <span class="token number">10</span>
+</code></pre><p>第1空：head -n<br>
+第2空：head -n</p>
+<p>检查系统版本和内核信息</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 检查系统版本和内核信息</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"操作系统：<span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /etc/os-release <span class="token operator">|</span> <span class="token function">grep</span> PRETTY_NAME <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-d</span><span class="token operator">=</span> <span class="token parameter variable">-f2</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-d</span> <span class="token string">'"'</span><span class="token variable">)</span></span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"内核版本：<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> <span class="token parameter variable">-r</span><span class="token variable">)</span></span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"系统架构：<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> <span class="token parameter variable">-m</span><span class="token variable">)</span></span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"主机名：<span class="token variable"><span class="token variable">$(</span><span class="token function">hostname</span><span class="token variable">)</span></span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"IP地址：<span class="token variable"><span class="token variable">$(</span><span class="token function">hostname</span> <span class="token parameter variable">-I</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>"</span>
+</code></pre><p>第1空：os-release<br>
+第2空：r</p>
+<p>安装并配置 Elasticsearch</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装并配置Elasticsearch
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> es_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">es_version</span><span class="token punctuation">:</span> <span class="token string">"7.14.0"</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 下载Elasticsearch RPM包
+      <span class="token key atrule">get_url</span><span class="token punctuation">:</span>
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> <span class="token string">"https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ es_version }}-x86_64.rpm"</span>
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /tmp/
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Elasticsearch
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> /tmp/elasticsearch<span class="token punctuation">-</span><span class="token punctuation">{</span><span class="token punctuation">{</span> es_version <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">-</span>x86_64.rpm
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动Elasticsearch
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> elasticsearch
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+</code></pre><p>第1空：present<br>
+第2空：yes</p>
+<p>统计目录占用空间</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 统计目录占用空间</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入目录路径："</span> dir_path
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$dir_path</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"目录 <span class="token variable">$dir_path</span> 下各子目录占用空间："</span>
+    <span class="token function">du</span> <span class="token parameter variable">-sh</span> <span class="token string">"<span class="token variable">$dir_path</span>"</span>/* <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-hr</span>
+    <span class="token assign-left variable">total_size</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">du</span> <span class="token parameter variable">-sh</span> <span class="token string">"<span class="token variable">$dir_path</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"总占用空间：<span class="token variable">$total_size</span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"目录不存在"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：hr<br>
+第2空：total_size</p>
+<p>创建多个用户</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 创建多个用户
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 循环创建用户
+      <span class="token key atrule">user</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"{{ item.name }}"</span>
+        <span class="token key atrule">uid</span><span class="token punctuation">:</span> <span class="token string">"{{ item.uid }}"</span>
+        <span class="token key atrule">shell</span><span class="token punctuation">:</span> /bin/bash
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+      <span class="token key atrule">loop</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">{</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"devuser1"</span><span class="token punctuation">,</span> <span class="token key atrule">uid</span><span class="token punctuation">:</span> <span class="token number">1005</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">{</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"devuser2"</span><span class="token punctuation">,</span> <span class="token key atrule">uid</span><span class="token punctuation">:</span> <span class="token number">1006</span> <span class="token punctuation">}</span>
+</code></pre><p>第1空：present<br>
+第2空：1006</p>
+<p>计算 1 到 n 的累加和</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 计算1到n的累加和</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入一个整数："</span> n
+<span class="token assign-left variable">sum</span><span class="token operator">=</span><span class="token number">0</span>
+
+<span class="token keyword keyword-for">for</span> <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+    <span class="token assign-left variable">sum</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>sum <span class="token operator">+</span> i<span class="token variable">))</span></span>
+<span class="token keyword keyword-done">done</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"1到<span class="token variable">$n</span>的累加和为：<span class="token variable">$sum</span>"</span>
+</code></pre><p>第1空：n<br>
+第2空：i</p>
+<p>批量修改文件后缀名</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 批量修改文件后缀名</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入原后缀名："</span> old_ext
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入新后缀名："</span> new_ext
+<span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">0</span>
+
+<span class="token keyword keyword-for">for</span> <span class="token for-or-select variable">file</span> <span class="token keyword keyword-in">in</span> *.<span class="token variable">$old_ext</span><span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+        <span class="token assign-left variable">new_file</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${file<span class="token operator">%</span>.$old_ext}</span>.<span class="token variable">$new_ext</span>"</span>
+        <span class="token function">mv</span> <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token string">"<span class="token variable">$new_file</span>"</span>
+        <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+    <span class="token keyword keyword-fi">fi</span>
+<span class="token keyword keyword-done">done</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"共修改了<span class="token variable">$count</span>个文件"</span>
+</code></pre><p>第1空：new_ext<br>
+第2空：1</p>
+<p>管理 MySQL 服务</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 管理MySQL服务
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> db_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">mysql_root_password</span><span class="token punctuation">:</span> <span class="token string">"rootpass"</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装MySQL
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>server
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动MySQL并设置开机自启
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> mysqld
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+</code></pre><p>第1空：rootpass<br>
+第2空：yes</p>
+<p>部署 Redis 服务</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 部署Redis服务
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> cache_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Redis
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> redis
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 修改Redis配置
+      <span class="token key atrule">lineinfile</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /etc/redis.conf
+        <span class="token key atrule">regexp</span><span class="token punctuation">:</span> <span class="token string">'^bind'</span>
+        <span class="token key atrule">line</span><span class="token punctuation">:</span> <span class="token string">'bind 0.0.0.0'</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动Redis并设置开机自启
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> redis
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+</code></pre><p>第1空：present<br>
+第2空：started</p>
+<p>配置 SSH 服务</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置SSH服务
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 修改SSH端口
+      <span class="token key atrule">lineinfile</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /etc/ssh/sshd_config
+        <span class="token key atrule">regexp</span><span class="token punctuation">:</span> <span class="token string">'^#?Port'</span>
+        <span class="token key atrule">line</span><span class="token punctuation">:</span> <span class="token string">'Port 2222'</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+      <span class="token key atrule">notify</span><span class="token punctuation">:</span> restart sshd
+
+  <span class="token key atrule">handlers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> restart sshd
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> sshd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> restarted
+</code></pre><p>第1空：2222<br>
+第2空：present</p>
+<p>生成随机密码</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 生成随机密码</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入用户名："</span> username
+<span class="token assign-left variable">password</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>openssl rand <span class="token parameter variable">-base64</span> <span class="token number">12</span> <span class="token operator">|</span> <span class="token function">cut</span> -c1-10<span class="token variable">)</span></span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"用户名：<span class="token variable">$username</span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"生成的随机密码：<span class="token variable">$password</span>"</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$username</span>:<span class="token variable">$password</span>"</span> <span class="token operator">&gt;&gt;</span> /etc/passwd_list.txt
+<span class="token function">chmod</span> <span class="token number">600</span> /etc/passwd_list.txt
+</code></pre><p>第1空：password<br>
+第2空：passwd_list.txt</p>
+<p>查找并替换文件内容</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 查找并替换文件内容</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入要处理的文件："</span> <span class="token function">file</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入要查找的字符串："</span> old_str
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入要替换的字符串："</span> new_str
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token function">cp</span> <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token string">"<span class="token variable">${file}</span>.bak"</span>
+    <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s/<span class="token variable">${old_str}</span>/<span class="token variable">${new_str}</span>/g"</span> <span class="token string">"<span class="token variable">$file</span>"</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"替换完成，已创建备份文件 <span class="token variable">${file}</span>.bak"</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"替换前后对比："</span>
+    <span class="token function">diff</span> <span class="token string">"<span class="token variable">${file}</span>.bak"</span> <span class="token string">"<span class="token variable">$file</span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"文件不存在"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：file<br>
+第2空：file</p>
+<p>查找大文件</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 查找大文件</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入要查找的目录："</span> search_dir
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入文件大小阈值（MB）："</span> size
+
+<span class="token builtin class-name">echo</span> <span class="token string">"查找 <span class="token variable">$search_dir</span> 中大于 <span class="token variable">$size</span> MB 的文件："</span>
+<span class="token function">find</span> <span class="token string">"<span class="token variable">$search_dir</span>"</span> <span class="token parameter variable">-type</span> f <span class="token parameter variable">-size</span> +<span class="token variable">${size}</span>M <span class="token parameter variable">-exec</span> <span class="token function">ls</span> <span class="token parameter variable">-lh</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span> <span class="token punctuation">\</span>
+<span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $5, $9}'</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-k1</span>
+</code></pre><p>第1空：9<br>
+第2空：r</p>
+<p>部署 Nginx 虚拟主机</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 部署Nginx虚拟主机
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> web_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 创建虚拟主机配置目录
+      <span class="token key atrule">file</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /etc/nginx/conf.d
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> directory
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token number">0755</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 复制虚拟主机配置
+      <span class="token key atrule">template</span><span class="token punctuation">:</span>
+        <span class="token key atrule">src</span><span class="token punctuation">:</span> vhost.conf.j2
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/nginx/conf.d/<span class="token punctuation">{</span><span class="token punctuation">{</span> item.domain <span class="token punctuation">}</span><span class="token punctuation">}</span>.conf
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token number">0644</span>
+      <span class="token key atrule">loop</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">{</span> <span class="token key atrule">domain</span><span class="token punctuation">:</span> <span class="token string">"example.com"</span><span class="token punctuation">,</span> <span class="token key atrule">root</span><span class="token punctuation">:</span> <span class="token string">"/var/www/example"</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">{</span> <span class="token key atrule">domain</span><span class="token punctuation">:</span> <span class="token string">"test.com"</span><span class="token punctuation">,</span> <span class="token key atrule">root</span><span class="token punctuation">:</span> <span class="token string">"/var/www/test"</span> <span class="token punctuation">}</span>
+      <span class="token key atrule">notify</span><span class="token punctuation">:</span> restart nginx
+</code></pre><p>第1空：0755<br>
+第2空：/var/www/test</p>
+<p>分析 Web 访问日志</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 分析Web访问日志</span>
+<span class="token assign-left variable">log_file</span><span class="token operator">=</span><span class="token string">"/var/log/httpd/access_log"</span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$log_file</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"访问量最高的10个IP："</span>
+    <span class="token function">awk</span> <span class="token string">'{print $1}'</span> <span class="token string">"<span class="token variable">$log_file</span>"</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">-c</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-nr</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token number">10</span>
+
+    <span class="token builtin class-name">echo</span> <span class="token string">"最常访问的10个页面："</span>
+    <span class="token function">awk</span> <span class="token string">'{print $7}'</span> <span class="token string">"<span class="token variable">$log_file</span>"</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">-c</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-nr</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token number">10</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"日志文件不存在"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：head<br>
+第2空：7</p>
+<p>监控进程是否运行</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 监控进程是否运行</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入进程名："</span> proc_name
+<span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>pgrep <span class="token string">"<span class="token variable">$proc_name</span>"</span><span class="token variable">)</span></span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$pid</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"进程 <span class="token variable">$proc_name</span> 正在运行，PID：<span class="token variable">$pid</span>"</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"内存使用：<span class="token variable"><span class="token variable">$(</span><span class="token function">ps</span> <span class="token parameter variable">-p</span> $pid <span class="token parameter variable">-o</span> %mem,rss --no-headers<span class="token variable">)</span></span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"进程 <span class="token variable">$proc_name</span> 未运行"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：pid<br>
+第2空：proc_name</p>
+<p>检查文件是否存在并备份</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 检查文件是否存在并备份</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入文件名："</span> filename
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$filename</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token assign-left variable">backup_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${filename}</span>.bak"</span>
+    <span class="token function">cp</span> <span class="token string">"<span class="token variable">$filename</span>"</span> <span class="token string">"<span class="token variable">$backup_name</span>"</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"已创建备份文件：<span class="token variable">$backup_name</span>"</span>
+    <span class="token function">ls</span> <span class="token parameter variable">-l</span> <span class="token string">"<span class="token variable">$filename</span>"</span> <span class="token string">"<span class="token variable">$backup_name</span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"文件 <span class="token variable">$filename</span> 不存在"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：backup_name<br>
+第2空：backup_name</p>
+<p>配置时间同步</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置时间同步
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装chrony
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> chrony
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动chronyd服务
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> chronyd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 同步时间
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> chronyc sync
+</code></pre><p>第1空：present<br>
+第2空：yes</p>
+<p>部署 GitLab</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 部署GitLab
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> git_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装依赖包
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> curl
+          <span class="token punctuation">-</span> policycoreutils
+          <span class="token punctuation">-</span> openssh<span class="token punctuation">-</span>server
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动SSH服务
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> sshd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 下载GitLab安装脚本
+      <span class="token key atrule">get_url</span><span class="token punctuation">:</span>
+        <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//packages.gitlab.com/install/repositories/gitlab/gitlab<span class="token punctuation">-</span>ce/script.rpm.sh
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /tmp/install_gitlab.sh
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token number">0755</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 运行安装脚本
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> bash /tmp/install_gitlab.sh
+</code></pre><p>第1空：present<br>
+第2空：0755</p>
+<p>统计目录下文件总数</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 统计指定目录下的文件总数</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入目录路径："</span> dir_path
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$dir_path</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token assign-left variable">file_count</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ls</span> <span class="token parameter variable">-l</span> <span class="token string">"<span class="token variable">$dir_path</span>"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> ^d <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span><span class="token variable">)</span></span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"目录 <span class="token variable">$dir_path</span> 中的文件总数：<span class="token variable">$file_count</span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"错误：<span class="token variable">$dir_path</span> 不是有效目录"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：file_count<br>
+第2空：dir_path</p>
+<p>检查系统服务状态</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 检查系统服务状态</span>
+<span class="token assign-left variable">services</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"sshd"</span> <span class="token string">"httpd"</span> <span class="token string">"mysqld"</span><span class="token punctuation">)</span>
+
+<span class="token keyword keyword-for">for</span> <span class="token for-or-select variable">service</span> <span class="token keyword keyword-in">in</span> <span class="token string">"<span class="token variable">${services<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword keyword-do">do</span>
+    <span class="token assign-left variable">status</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>systemctl is-active <span class="token string">"<span class="token variable">$service</span>"</span><span class="token variable">)</span></span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$status</span>"</span> <span class="token operator">=</span> <span class="token string">"active"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$service</span> 服务运行正常"</span>
+    <span class="token keyword keyword-else">else</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$service</span> 服务状态异常：<span class="token variable">$status</span>"</span>
+    <span class="token keyword keyword-fi">fi</span>
+<span class="token keyword keyword-done">done</span>
+</code></pre><p>第1空：active<br>
+第2空：status</p>
+<p>配置 HAProxy 负载均衡</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置HAProxy负载均衡
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> lb_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装HAProxy
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> haproxy
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置HAProxy
+      <span class="token key atrule">template</span><span class="token punctuation">:</span>
+        <span class="token key atrule">src</span><span class="token punctuation">:</span> haproxy.cfg.j2
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/haproxy/haproxy.cfg
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token number">0644</span>
+      <span class="token key atrule">notify</span><span class="token punctuation">:</span> restart haproxy
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启用并启动HAProxy
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> haproxy
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+</code></pre><p>第1空：present<br>
+第2空：yes</p>
+<p>管理用户 sudo 权限</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 管理用户sudo权限
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> all
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 允许wheel组sudo无密码
+      <span class="token key atrule">lineinfile</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /etc/sudoers
+        <span class="token key atrule">regexp</span><span class="token punctuation">:</span> <span class="token string">'^%wheel'</span>
+        <span class="token key atrule">line</span><span class="token punctuation">:</span> <span class="token string">'%wheel ALL=(ALL) NOPASSWD:ALL'</span>
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+        <span class="token key atrule">validate</span><span class="token punctuation">:</span> <span class="token string">'visudo -cf %s'</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 将admin用户加入wheel组
+      <span class="token key atrule">user</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> admin
+        <span class="token key atrule">groups</span><span class="token punctuation">:</span> wheel
+        <span class="token key atrule">append</span><span class="token punctuation">:</span> yes
+</code></pre><p>第1空：NOPASSWD:ALL<br>
+第2空：yes</p>
+<p>配置 Rsync 服务</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置Rsync服务
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> backup_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Rsync
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> rsync
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 配置Rsync服务
+      <span class="token key atrule">copy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">src</span><span class="token punctuation">:</span> rsyncd.conf
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/rsyncd.conf
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token number">0644</span>
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动Rsync服务
+      <span class="token key atrule">service</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> rsyncd
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> started
+        <span class="token key atrule">enabled</span><span class="token punctuation">:</span> yes
+</code></pre><p>第1空：present<br>
+第2空：yes</p>
+<p>检查系统内存使用情况</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 检查系统内存使用情况</span>
+<span class="token assign-left variable">total_mem</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">free</span> <span class="token parameter variable">-m</span> <span class="token operator">|</span> <span class="token function">grep</span> Mem <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $2}'</span><span class="token variable">)</span></span>
+<span class="token assign-left variable">used_mem</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">free</span> <span class="token parameter variable">-m</span> <span class="token operator">|</span> <span class="token function">grep</span> Mem <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $3}'</span><span class="token variable">)</span></span>
+<span class="token assign-left variable">mem_usage</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>used_mem <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">/</span> total_mem<span class="token variable">))</span></span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"总内存：<span class="token variable">${total_mem}</span>MB"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"已用内存：<span class="token variable">${used_mem}</span>MB"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"内存使用率：<span class="token variable">${mem_usage}</span>%"</span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token variable">$mem_usage</span> <span class="token parameter variable">-gt</span> <span class="token number">80</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"警告：内存使用率过高！"</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"占用内存最高的5个进程："</span>
+    <span class="token function">ps</span> aux <span class="token parameter variable">--sort</span><span class="token operator">=</span>-%mem <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-n</span> <span class="token number">6</span> <span class="token operator">|</span> <span class="token function">tail</span> <span class="token parameter variable">-n</span> <span class="token number">5</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：80<br>
+第2空：head -n</p>
+<p>安装 Docker</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Docker
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> app_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Docker依赖
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> yum<span class="token punctuation">-</span>utils
+          <span class="token punctuation">-</span> device<span class="token punctuation">-</span>mapper<span class="token punctuation">-</span>persistent<span class="token punctuation">-</span>data
+          <span class="token punctuation">-</span> lvm2
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 添加Docker仓库
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> yum<span class="token punctuation">-</span>config<span class="token punctuation">-</span>manager <span class="token punctuation">-</span><span class="token punctuation">-</span>add<span class="token punctuation">-</span>repo https<span class="token punctuation">:</span>//download.docker.com/linux/centos/docker<span class="token punctuation">-</span>ce.repo
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Docker CE
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> docker<span class="token punctuation">-</span>ce
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+</code></pre><p>第1空：present<br>
+第2空：present</p>
+<p>监控系统登录失败情况</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 监控系统登录失败情况</span>
+<span class="token assign-left variable">log_file</span><span class="token operator">=</span><span class="token string">"/var/log/secure"</span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$log_file</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"最近10次登录失败记录："</span>
+    <span class="token function">grep</span> <span class="token string">"Failed password"</span> <span class="token string">"<span class="token variable">$log_file</span>"</span> <span class="token operator">|</span> <span class="token function">tail</span> <span class="token parameter variable">-10</span>
+
+    <span class="token builtin class-name">echo</span> <span class="token string">"登录失败次数最多的IP："</span>
+    <span class="token function">grep</span> <span class="token string">"Failed password"</span> <span class="token string">"<span class="token variable">$log_file</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $11}'</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">-c</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-nr</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token number">5</span>
+
+    <span class="token builtin class-name">echo</span> <span class="token string">"总失败次数：<span class="token variable"><span class="token variable">$(</span><span class="token function">grep</span> <span class="token parameter variable">-c</span> <span class="token string">"Failed password"</span> <span class="token string">"<span class="token variable">$log_file</span>"</span><span class="token variable">)</span></span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"日志文件不存在"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：head<br>
+第2空：log_file</p>
+<p>部署 Nginx 配置</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 部署Nginx配置
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> web_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> yes
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Nginx
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 复制Nginx配置模板
+      <span class="token key atrule">template</span><span class="token punctuation">:</span>
+        <span class="token key atrule">src</span><span class="token punctuation">:</span> nginx.conf.j2
+        <span class="token key atrule">dest</span><span class="token punctuation">:</span> /etc/nginx/nginx.conf
+        <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token number">0644</span>
+      <span class="token key atrule">notify</span><span class="token punctuation">:</span> restart nginx
+
+</code></pre><p>第1空：present<br>
+第2空：j2</p>
+<p>自动备份 MySQL 数据库</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 自动备份MySQL数据库</span>
+<span class="token assign-left variable">db_name</span><span class="token operator">=</span><span class="token string">"mydb"</span>
+<span class="token assign-left variable">backup_dir</span><span class="token operator">=</span><span class="token string">"/var/backups/mysql"</span>
+<span class="token assign-left variable">timestamp</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y%m%d_%H%M%S<span class="token variable">)</span></span>
+<span class="token assign-left variable">backup_file</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${backup_dir}</span>/<span class="token variable">${db_name}</span>_<span class="token variable">${timestamp}</span>.sql"</span>
+
+<span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable">$backup_dir</span>"</span>
+
+mysqldump <span class="token parameter variable">-u</span> root -p<span class="token string">"rootpass"</span> <span class="token string">"<span class="token variable">$db_name</span>"</span> <span class="token operator">&gt;</span> <span class="token string">"<span class="token variable">$backup_file</span>"</span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"数据库备份成功：<span class="token variable">$backup_file</span>"</span>
+    <span class="token function">gzip</span> <span class="token string">"<span class="token variable">$backup_file</span>"</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"数据库备份失败"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：rootpass<br>
+第2空：0</p>
+<p>部署 Python 应用</p>
+<pre data-role="codeBlock" data-info="yaml" class="language-yaml yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 部署Python应用
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> app_servers
+  <span class="token key atrule">become</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app_port</span><span class="token punctuation">:</span> <span class="token number">8000</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装Python3
+      <span class="token key atrule">yum</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> python3
+        <span class="token key atrule">state</span><span class="token punctuation">:</span> present
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 安装应用依赖
+      <span class="token key atrule">pip</span><span class="token punctuation">:</span>
+        <span class="token key atrule">requirements</span><span class="token punctuation">:</span> /opt/app/requirements.txt
+        <span class="token key atrule">executable</span><span class="token punctuation">:</span> pip3
+
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> 启动应用
+      <span class="token key atrule">command</span><span class="token punctuation">:</span> python3 /opt/app/main.py <span class="token punctuation">-</span><span class="token punctuation">-</span>port <span class="token punctuation">{</span><span class="token punctuation">{</span> app_port <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre><p>第1空：present<br>
+第2空：pip3</p>
+<p>检查并修复文件系统</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># 检查并修复文件系统</span>
+<span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入要检查的分区（如/dev/sda1）："</span> partition
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-b</span> <span class="token string">"<span class="token variable">$partition</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"检查分区 <span class="token variable">$partition</span> 的文件系统..."</span>
+    <span class="token function">fsck</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$partition</span>"</span>
+
+    <span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"是否修复发现的错误？(y/n)："</span> answer
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$answer</span>"</span> <span class="token operator">=</span> <span class="token string">"y"</span> <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$answer</span>"</span> <span class="token operator">=</span> <span class="token string">"Y"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+        <span class="token function">fsck</span> <span class="token parameter variable">-y</span> <span class="token string">"<span class="token variable">$partition</span>"</span>
+    <span class="token keyword keyword-fi">fi</span>
+<span class="token keyword keyword-else">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"错误：<span class="token variable">$partition</span> 不是有效分区"</span>
+<span class="token keyword keyword-fi">fi</span>
+</code></pre><p>第1空：partition<br>
+第2空：partition</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
